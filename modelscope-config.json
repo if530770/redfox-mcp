@@ -1,5 +1,9 @@
 {
-  "command": "npx",
-  "args": ["-y", "redfox-mcp-server@latest"],
-  "env": { "REDFOX_API_KEY": "" }
+  "mcpServers": {
+    "redfox-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "redfox-mcp-server@latest"],
+      "env": { "REDFOX_API_KEY": "" }
+    }
+  }
 }

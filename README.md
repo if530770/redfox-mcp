@@ -6,6 +6,18 @@
 - **零依赖**：纯 Node.js 原生实现（内置 fetch），无需 npm install、无需 Python
 - **协议**：MCP (Model Context Protocol) over stdio，兼容 Qoder / Claude / Cursor 等客户端
 
+```json
+{
+  "mcpServers": {
+    "redfox-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "redfox-mcp-server@latest"],
+      "env": { "REDFOX_API_KEY": "" }
+    }
+  }
+}
+```
+
 ## 部署到 ModelScope MCP 广场（托管部署）
 
 魔搭 MCP 广场支持将本服务器**托管部署**为云端 MCP 服务，对外提供专属 Remote URL（SSE / Streamable HTTP），用户无需本地运行即可远程连接。
@@ -26,17 +38,9 @@ npm publish         # 包名 redfox-mcp-server，零依赖，37KB
 |------|-----|
 | 英文名称 | redfox-mcp-server |
 | 托管类型 | **可托管部署** |
-| 服务配置 config | 见下方 JSON（**不允许注释**） |
+| 服务配置 config | 填写下方 `mcpServers` 中的 server 配置（**不允许注释**） |
 | 环境变量 | `REDFOX_API_KEY`（连接时由用户填写自己的 Key） |
-| README | 功能说明 + 使用方式 |
-
-```json
-{
-  "command": "npx",
-  "args": ["-y", "redfox-mcp-server@latest"],
-  "env": { "REDFOX_API_KEY": "" }
-}
-```
+| README | 功能说明 + 使用方式（可直接用本文件） |
 
 平台部署检测会执行 `npx -y redfox-mcp-server@latest` 并调用 `tools/list`（已实测无需 API Key 即可返回 91 个工具，检测可顺利通过）。
 
