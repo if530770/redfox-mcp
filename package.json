@@ -1,0 +1,40 @@
+{
+  "name": "redfox-mcp-server",
+  "version": "1.0.0",
+  "description": "RedFox 新媒体数据 MCP 服务器：抖音/小红书/公众号/B站/快手/微博/YouTube 等平台爆款数据查询、违禁词检测、AI搜索、视频下载与生成（91 个工具，零依赖）",
+  "license": "MIT",
+  "bin": {
+    "redfox-mcp": "server.js"
+  },
+  "main": "server.js",
+  "files": [
+    "server.js",
+    "src/",
+    "tools-manifest.json",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "redfox",
+    "douyin",
+    "xiaohongshu",
+    "wechat",
+    "bilibili",
+    "kuaishou",
+    "weibo",
+    "新榜",
+    "新媒体"
+  ],
+  "scripts": {
+    "start": "node server.js",
+    "test:list": "node mcp-test-client.js list",
+    "gen:register": "node gen-qoder-register.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
