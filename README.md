@@ -12,7 +12,7 @@
     "redfox-mcp-server": {
       "command": "npx",
       "args": ["-y", "redfox-mcp-server@latest"],
-      "env": { "REDFOX_API_KEY": "" }
+      "env": { "REDFOX_API_KEY": "your-api-key-here" }
     }
   }
 }
@@ -72,19 +72,32 @@ node server.js
 
 ### 3. 配置到客户端
 
-**Qoder**：在 MCP 配置中添加 stdio 服务器：
+**Qoder**：在 MCP 配置中添加本服务器（发布后可用 npx 方式，本地开发用 node 方式）：
 
-```json
-{
-  "mcpServers": {
-    "redfox-mcp": {
-      "command": "node",
-      "args": ["E:\\path\\to\\redfox-mcp\\server.js"],
-      "env": { "REDFOX_API_KEY": "ak_xxxx..." }
+- **npx 方式（推荐，需已发布 npm 包）**：
+  ```json
+  {
+    "mcpServers": {
+      "redfox-mcp-server": {
+        "command": "npx",
+        "args": ["-y", "redfox-mcp-server@latest"],
+        "env": { "REDFOX_API_KEY": "ak_xxxx..." }
+      }
     }
   }
-}
-```
+  ```
+- **本地开发方式**：
+  ```json
+  {
+    "mcpServers": {
+      "redfox-mcp": {
+        "command": "node",
+        "args": ["E:\\path\\to\\redfox-mcp\\server.js"],
+        "env": { "REDFOX_API_KEY": "ak_xxxx..." }
+      }
+    }
+  }
+  ```
 
 Qoder 注册文件（`SERVER_METADATA.json` + `tools/*.json`）位于 [qoder-register/](qoder-register/)，由 `gen-qoder-register.js` 自动生成。
 
