@@ -1,0 +1,26 @@
+{
+  "name": "trending-hub",
+  "description": "全网热点聚合查询，按平台和关键词获取热门话题",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "platform": {
+        "type": "string",
+        "description": "平台：douyin/xiaohongshu/weibo 等",
+        "default": "douyin"
+      },
+      "keywords": {
+        "type": "string",
+        "description": "关键词（逗号分隔）"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    }
+  }
+}

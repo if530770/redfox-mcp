@@ -1,0 +1,21 @@
+{
+  "name": "weibo-post-search",
+  "description": "微博用户作品列表查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string",
+        "description": "微博用户ID"
+      },
+      "page": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      }
+    },
+    "required": [
+      "userId"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "xiaohongshu-write",
+  "description": "小红书笔记创作数据支撑，基于关键词查询同赛道爆款笔记供创作参考",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "创作方向关键词"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

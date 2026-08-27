@@ -1,0 +1,29 @@
+{
+  "name": "bilibili-keywords-search",
+  "description": "B站内容搜索，按关键词搜索B站视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "sortType": {
+        "type": "string",
+        "description": "排序类型"
+      },
+      "publishTime": {
+        "type": "string",
+        "description": "发布时间"
+      },
+      "page": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

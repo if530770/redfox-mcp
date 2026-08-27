@@ -1,0 +1,16 @@
+{
+  "name": "tiktok-video-downloader",
+  "description": "根据视频链接下载TikTok视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "TikTok视频链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

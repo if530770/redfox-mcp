@@ -1,0 +1,26 @@
+{
+  "name": "kuaishou-account-works",
+  "description": "快手账号作品查询，按账号查询作品列表",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string",
+        "description": "快手用户ID"
+      },
+      "page": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      },
+      "size": {
+        "type": "number",
+        "description": "每页数量",
+        "default": 20
+      }
+    },
+    "required": [
+      "userId"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "xiaohongshu-search",
+  "description": "小红书笔记搜索，根据关键词获取爆款笔记数据",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词，空字符串查询全站热门"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      },
+      "pageNum": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      },
+      "pageSize": {
+        "type": "number",
+        "description": "每页数量（最大50）",
+        "default": 50
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "doubao-websearch",
+  "description": "豆包 AI 联网搜索，输入问题返回AI搜索结果",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "inquiryText": {
+        "type": "string",
+        "description": "搜索问题"
+      }
+    },
+    "required": [
+      "inquiryText"
+    ]
+  }
+}

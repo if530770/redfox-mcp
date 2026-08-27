@@ -1,0 +1,8 @@
+{
+  "name": "zhihu-rewrite",
+  "description": "将用户文案转换为知乎风格，携带2-3个特色关键词（指南、教程、秘籍等），按10项写作技巧改写，末尾附加Tags；当用户需要将产品介绍、攻略分享等内容改写为知乎爆款文案时使用",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

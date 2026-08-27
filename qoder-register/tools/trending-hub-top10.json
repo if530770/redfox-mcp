@@ -1,0 +1,17 @@
+{
+  "name": "trending-hub-top10",
+  "description": "全网热搜关键词 TOP10 查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    }
+  }
+}

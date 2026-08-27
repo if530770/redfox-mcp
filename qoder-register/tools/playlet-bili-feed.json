@@ -1,0 +1,57 @@
+{
+  "name": "playlet-bili-feed",
+  "description": "B站短剧爆款内容追踪工具，每日自动扫描B站短剧创作内容，按点赞量筛选爆款作品，智能聚类题材后生成可视化HTML日报与创作趋势分析。⚠️查询前脚本先做输入校验：关键词需命中短剧题材词库（topic_keywords 中规定的题材名+全部相关词，如「打脸」命中逆袭题材相关词），命中后直接使用该关键词查询数据；不满足时提醒'关键词不满足查询条件'并推荐相关词，且不发起接口请求。数据每日15:00更新前一",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "msgType": {
+        "type": "string",
+        "description": "msgType"
+      },
+      "platform": {
+        "type": "string",
+        "description": "platform"
+      },
+      "pageNum": {
+        "type": "number",
+        "description": "pageNum"
+      },
+      "pageSize": {
+        "type": "number",
+        "description": "pageSize"
+      },
+      "startTime": {
+        "type": "string",
+        "description": "startTime"
+      },
+      "endTime": {
+        "type": "string",
+        "description": "endTime"
+      },
+      "timestamp": {
+        "type": "string",
+        "description": "timestamp"
+      },
+      "keyword_no_match": {
+        "type": "string",
+        "description": "keyword_no_match"
+      },
+      "no_data": {
+        "type": "string",
+        "description": "no_data"
+      },
+      "probe_fail": {
+        "type": "string",
+        "description": "probe_fail"
+      },
+      "probe_error": {
+        "type": "string",
+        "description": "probe_error"
+      },
+      "api_error": {
+        "type": "string",
+        "description": "api_error"
+      }
+    }
+  }
+}

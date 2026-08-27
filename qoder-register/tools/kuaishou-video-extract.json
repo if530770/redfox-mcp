@@ -1,0 +1,16 @@
+{
+  "name": "kuaishou-video-extract",
+  "description": "快手视频文案提取（视频转文字），提交视频链接自动提取文案",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "快手视频链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

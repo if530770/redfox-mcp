@@ -1,0 +1,16 @@
+{
+  "name": "bilibili-video-downloader",
+  "description": "根据视频链接下载B站视频，返回视频地址",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "B站视频链接（如 https://www.bilibili.com/video/BVxxxx）"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

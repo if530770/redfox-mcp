@@ -1,0 +1,17 @@
+{
+  "name": "douyin-similar-account",
+  "description": "查询抖音相似账号，根据账号ID或名称匹配对标账号",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string",
+        "description": "抖音账号ID"
+      },
+      "accountName": {
+        "type": "string",
+        "description": "抖音账号名称"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "bilibili-portfolio-search",
+  "description": "B站用户作品列表查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "uid": {
+        "type": "string",
+        "description": "B站用户UID"
+      }
+    },
+    "required": [
+      "uid"
+    ]
+  }
+}

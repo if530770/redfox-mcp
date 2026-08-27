@@ -1,0 +1,21 @@
+{
+  "name": "weibo-realtime-search",
+  "description": "微博实时搜索，按关键词实时搜索微博内容",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "page": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

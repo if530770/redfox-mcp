@@ -1,0 +1,16 @@
+{
+  "name": "xiaohongshu-prohibited-word",
+  "description": "小红书违禁词检测，检查笔记文案中的违规词",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "待检测文案内容"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

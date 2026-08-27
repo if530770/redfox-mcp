@@ -1,0 +1,28 @@
+{
+  "name": "stock-feed",
+  "description": "股票内容资讯查询，跨平台搜索股票相关爆款内容",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词（如股票代码或名称）"
+      },
+      "platforms": {
+        "type": "string",
+        "description": "平台列表（逗号分隔）"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

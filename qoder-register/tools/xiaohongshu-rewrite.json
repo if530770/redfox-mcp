@@ -1,0 +1,8 @@
+{
+  "name": "xiaohongshu-rewrite",
+  "description": "小红书文案改写能力；当用户需要将文案改写为小红书风格时使用",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

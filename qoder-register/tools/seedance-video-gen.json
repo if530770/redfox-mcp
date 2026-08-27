@@ -1,0 +1,69 @@
+{
+  "name": "seedance-video-gen",
+  "description": "AI视频生成工具，基于豆包 Seedance 2.0 模型，输入文字提示词生成视频（自动等待任务完成并返回视频链接）",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "视频内容描述提示词"
+      },
+      "resolution": {
+        "type": "string",
+        "description": "分辨率",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ],
+        "default": "720p"
+      },
+      "ratio": {
+        "type": "string",
+        "description": "画面比例",
+        "enum": [
+          "16:9",
+          "9:16",
+          "1:1"
+        ],
+        "default": "16:9"
+      },
+      "duration": {
+        "type": "number",
+        "description": "视频时长（秒）",
+        "enum": [
+          5,
+          10
+        ],
+        "default": 5
+      },
+      "seed": {
+        "type": "number",
+        "description": "随机种子，-1为随机",
+        "default": -1
+      },
+      "watermark": {
+        "type": "boolean",
+        "description": "是否带水印",
+        "default": true
+      },
+      "generateAudio": {
+        "type": "boolean",
+        "description": "是否生成音频",
+        "default": true
+      },
+      "returnLastFrame": {
+        "type": "boolean",
+        "description": "是否返回最后一帧图片",
+        "default": false
+      },
+      "imageUrl": {
+        "type": "string",
+        "description": "参考图片URL（图生视频）"
+      }
+    },
+    "required": [
+      "prompt"
+    ]
+  }
+}

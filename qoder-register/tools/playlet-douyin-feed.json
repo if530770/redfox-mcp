@@ -1,0 +1,57 @@
+{
+  "name": "playlet-douyin-feed",
+  "description": "短剧-抖音信息源 — 每日扫描抖音短剧爆款内容,按点赞量筛选热门短剧,智能聚类题材方向后生成包含封面、互动数据与创作洞察的HTML日报。支持按题材(穿越/霸总/重生等)、达人、时间范围定向查询。⚠️查询前脚本先做输入校验：关键词需命中短剧题材词库（topic_keywords 中规定的题材名+全部相关词，如「打脸」命中逆袭题材相关词），命中后直接使用该关键词查询数据；不满足时提醒'关键词不满足查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "msgType": {
+        "type": "string",
+        "description": "msgType"
+      },
+      "platform": {
+        "type": "string",
+        "description": "platform"
+      },
+      "pageNum": {
+        "type": "number",
+        "description": "pageNum"
+      },
+      "pageSize": {
+        "type": "number",
+        "description": "pageSize"
+      },
+      "startTime": {
+        "type": "string",
+        "description": "startTime"
+      },
+      "endTime": {
+        "type": "string",
+        "description": "endTime"
+      },
+      "timestamp": {
+        "type": "string",
+        "description": "timestamp"
+      },
+      "no_data": {
+        "type": "string",
+        "description": "no_data"
+      },
+      "probe_fail": {
+        "type": "string",
+        "description": "probe_fail"
+      },
+      "probe_error": {
+        "type": "string",
+        "description": "probe_error"
+      },
+      "keyword_no_match": {
+        "type": "string",
+        "description": "keyword_no_match"
+      },
+      "api_error": {
+        "type": "string",
+        "description": "api_error"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "kuaishou-comment",
+  "description": "快手作品评论查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "opusId": {
+        "type": "string",
+        "description": "快手作品ID"
+      },
+      "cursor": {
+        "type": "string",
+        "description": "分页游标"
+      }
+    },
+    "required": [
+      "opusId"
+    ]
+  }
+}

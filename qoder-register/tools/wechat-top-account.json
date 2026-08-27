@@ -1,0 +1,25 @@
+{
+  "name": "wechat-top-account",
+  "description": "公众号头部账号榜，查询最具影响力的公众号",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "dateType": {
+        "type": "string",
+        "description": "日期类型：1=日榜, 2=周榜",
+        "default": "1"
+      },
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      },
+      "category": {
+        "type": "string",
+        "description": "分类"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}

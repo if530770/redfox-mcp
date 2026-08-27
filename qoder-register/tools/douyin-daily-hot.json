@@ -1,0 +1,22 @@
+{
+  "name": "douyin-daily-hot",
+  "description": "抖音每日爆款榜，查询每日点赞排行最高的作品",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "榜单类型",
+        "default": "1"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    }
+  }
+}

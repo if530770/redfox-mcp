@@ -1,0 +1,25 @@
+{
+  "name": "xiaohongshu-title",
+  "description": "小红书爆款标题生成参考，查询同赛道爆款笔记标题规律",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "赛道关键词"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "maxItems": {
+        "type": "number",
+        "description": "返回数量",
+        "default": 10
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

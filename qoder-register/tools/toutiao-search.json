@@ -1,0 +1,21 @@
+{
+  "name": "toutiao-search",
+  "description": "今日头条作品搜索，按关键词查询头条爆款内容",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "offset": {
+        "type": "number",
+        "description": "偏移量",
+        "default": 0
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "xiaohongshu-note-analyzer",
+  "description": "小红书笔记优化助手数据查询，查询同赛道爆款笔记用于文案评分对比",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "文案主题关键词"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "maxItems": {
+        "type": "number",
+        "description": "返回数量",
+        "default": 10
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "xiaohongshu-top-account",
+  "description": "小红书头部账号榜，查询最具影响力的小红书账号",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "dateType": {
+        "type": "string",
+        "description": "日期类型：1=日榜, 2=周榜",
+        "default": "1"
+      },
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      },
+      "type": {
+        "type": "string",
+        "description": "榜单类型"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}

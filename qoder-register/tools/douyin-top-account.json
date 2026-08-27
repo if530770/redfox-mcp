@@ -1,0 +1,25 @@
+{
+  "name": "douyin-top-account",
+  "description": "抖音头部账号榜，查询抖音最具影响力账号排行",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "dateType": {
+        "type": "string",
+        "description": "日期类型：1=日榜, 2=周榜",
+        "default": "1"
+      },
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      },
+      "type": {
+        "type": "string",
+        "description": "榜单类型"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}

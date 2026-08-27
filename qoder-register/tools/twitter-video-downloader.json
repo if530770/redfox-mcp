@@ -1,0 +1,16 @@
+{
+  "name": "twitter-video-downloader",
+  "description": "根据推文链接下载X(Twitter)视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "X(Twitter)推文链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

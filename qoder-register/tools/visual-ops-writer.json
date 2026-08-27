@@ -1,0 +1,38 @@
+{
+  "name": "visual-ops-writer",
+  "description": "AI图片生成工具（视觉运营文案配图），提交文字提示词生成图片，支持参考图、批量风格（自动等待任务完成）",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "图片内容描述提示词"
+      },
+      "style": {
+        "type": "string",
+        "description": "生成风格：redfox=红狐视觉风格, popcomic=流行漫画, yellowcomic=黄漫, reference=参考图风格, none=无风格",
+        "enum": [
+          "redfox",
+          "popcomic",
+          "yellowcomic",
+          "reference",
+          "none",
+          "random"
+        ],
+        "default": "redfox"
+      },
+      "size": {
+        "type": "string",
+        "description": "图片尺寸，如 1024x1024 / 1792x1024 / 1024x1792 等",
+        "default": "1792x1024"
+      },
+      "referenceImage": {
+        "type": "string",
+        "description": "参考图片URL（style=reference 时使用）"
+      }
+    },
+    "required": [
+      "prompt"
+    ]
+  }
+}

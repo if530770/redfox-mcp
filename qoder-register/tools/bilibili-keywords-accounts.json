@@ -1,0 +1,25 @@
+{
+  "name": "bilibili-keywords-accounts",
+  "description": "B站账号搜索，按关键词搜索B站UP主",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "order": {
+        "type": "string",
+        "description": "排序方式"
+      },
+      "page": {
+        "type": "number",
+        "description": "页码",
+        "default": 1
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

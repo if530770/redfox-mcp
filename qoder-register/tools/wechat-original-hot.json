@@ -1,0 +1,22 @@
+{
+  "name": "wechat-original-hot",
+  "description": "公众号原创爆款文章查询，按分类和时间获取原创10w+文章",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "分类：总排名/科技数码/健康养生 等23个标准分类",
+        "default": "总排名"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    }
+  }
+}

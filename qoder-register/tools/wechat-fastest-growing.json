@@ -1,0 +1,16 @@
+{
+  "name": "wechat-fastest-growing",
+  "description": "公众号涨粉最快账号榜",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}

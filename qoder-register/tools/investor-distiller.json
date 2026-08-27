@@ -1,0 +1,25 @@
+{
+  "name": "investor-distiller",
+  "description": ">",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "account": {
+        "type": "number",
+        "description": "account"
+      },
+      "sortType": {
+        "type": "string",
+        "description": "sortType"
+      },
+      "offset": {
+        "type": "number",
+        "description": "offset"
+      },
+      "workUuid": {
+        "type": "string",
+        "description": "workUuid"
+      }
+    }
+  }
+}

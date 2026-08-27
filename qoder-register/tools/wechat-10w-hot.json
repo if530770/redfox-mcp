@@ -1,0 +1,26 @@
+{
+  "name": "wechat-10w-hot",
+  "description": "公众号10w+爆文查询，按分类和时间获取10w+阅读热门文章",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "分类：总排名/科技数码/健康养生 等23个标准分类",
+        "default": "总排名"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD（支持 yesterday 等）"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "结束日期 YYYY-MM-DD"
+      }
+    },
+    "required": [
+      "startDate",
+      "endDate"
+    ]
+  }
+}

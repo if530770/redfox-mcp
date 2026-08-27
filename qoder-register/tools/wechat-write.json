@@ -1,0 +1,25 @@
+{
+  "name": "wechat-write",
+  "description": "公众号爆款文章写作参考，基于关键词查询同赛道爆款文章供创作参考",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "创作方向关键词"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "maxItems": {
+        "type": "number",
+        "description": "返回数量",
+        "default": 10
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

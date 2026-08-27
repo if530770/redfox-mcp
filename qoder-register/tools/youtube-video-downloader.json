@@ -1,0 +1,16 @@
+{
+  "name": "youtube-video-downloader",
+  "description": "根据视频链接下载YouTube视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "YouTube视频链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

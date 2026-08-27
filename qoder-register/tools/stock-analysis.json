@@ -1,0 +1,29 @@
+{
+  "name": "stock-analysis",
+  "description": ">",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "account": {
+        "type": "number",
+        "description": "account"
+      },
+      "offset": {
+        "type": "number",
+        "description": "offset"
+      },
+      "sortType": {
+        "type": "string",
+        "description": "sortType"
+      },
+      "publishTimeStart": {
+        "type": "boolean",
+        "description": "publishTimeStart"
+      },
+      "publishTimeEnd": {
+        "type": "boolean",
+        "description": "publishTimeEnd"
+      }
+    }
+  }
+}

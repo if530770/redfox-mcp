@@ -1,0 +1,33 @@
+{
+  "name": "douyin-subscribe",
+  "description": "抖音账号订阅追踪 — 通过抖音号订阅账号（最多20个），Agent 每日 9:00 自动拉取并生成 HTML 报告。账号 ID 直接内置于自动化命令中，无需文件存储。支持多抖音号批量订阅，自动生成精美 HTML 作品报告，终端/Markdown 表格按账号依次展示作品标题、收藏、评论、分享、点赞、发布时间等数据。当用户订阅抖音账号、追踪抖音作品更新、监控抖音竞品账号时使用。触发词：抖音订阅、抖音账",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "number",
+        "description": "accountId"
+      },
+      "accountName": {
+        "type": "number",
+        "description": "accountName"
+      },
+      "category": {
+        "type": "string",
+        "description": "category"
+      },
+      "shortId": {
+        "type": "string",
+        "description": "shortId"
+      },
+      "pageNum": {
+        "type": "number",
+        "description": "pageNum"
+      },
+      "pageSize": {
+        "type": "number",
+        "description": "pageSize"
+      }
+    }
+  }
+}

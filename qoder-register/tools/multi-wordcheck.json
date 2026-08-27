@@ -1,0 +1,28 @@
+{
+  "name": "multi-wordcheck",
+  "description": "多平台违禁词检测，检查文案中的敏感词并返回检测结果",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "待检测文案内容"
+      },
+      "platform": {
+        "type": "string",
+        "description": "目标平台",
+        "enum": [
+          "xiaohongshu",
+          "douyin",
+          "wechat",
+          "bilibili",
+          "kuaishou"
+        ],
+        "default": "xiaohongshu"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

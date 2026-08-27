@@ -1,0 +1,16 @@
+{
+  "name": "xiaohongshu-video-downloader",
+  "description": "根据笔记链接下载小红书视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "小红书笔记链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

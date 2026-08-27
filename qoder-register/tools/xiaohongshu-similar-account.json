@@ -1,0 +1,41 @@
+{
+  "name": "xiaohongshu-similar-account",
+  "description": "小红书创作者对标账号匹配工具，输入小红书账号ID或赛道+粉丝数+账号等级，推荐可直接复制的同阶对标和可参考的高阶标杆；当用户需要小红书账号推荐、KOL对标、起号参考、账号投放选择时使用。⚠️ 严禁任何联网搜索。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "redId": {
+        "type": "string",
+        "description": "redId"
+      },
+      "track": {
+        "type": "string",
+        "description": "track"
+      },
+      "maxFans": {
+        "type": "number",
+        "description": "maxFans"
+      },
+      "minFans": {
+        "type": "string",
+        "description": "minFans"
+      },
+      "level": {
+        "type": "string",
+        "description": "level"
+      },
+      "gmt_create": {
+        "type": "string",
+        "description": "gmt_create"
+      },
+      "same_level_accounts": {
+        "type": "number",
+        "description": "same_level_accounts"
+      },
+      "high_level_accounts": {
+        "type": "number",
+        "description": "high_level_accounts"
+      }
+    }
+  }
+}

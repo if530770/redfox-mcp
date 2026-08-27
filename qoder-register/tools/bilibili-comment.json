@@ -1,0 +1,34 @@
+{
+  "name": "bilibili-comment",
+  "description": "获取B站视频评论，异步任务自动轮询结果",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "B站视频链接或BV号"
+      },
+      "sortType": {
+        "type": "string",
+        "description": "排序：2=按热度, 1=按时间",
+        "enum": [
+          "2",
+          "1"
+        ],
+        "default": "2"
+      },
+      "dataNum": {
+        "type": "number",
+        "description": "获取评论数量",
+        "default": 20
+      },
+      "offset": {
+        "type": "string",
+        "description": "分页游标"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

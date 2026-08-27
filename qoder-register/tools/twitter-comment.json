@@ -1,0 +1,16 @@
+{
+  "name": "twitter-comment",
+  "description": "X(Twitter)推文评论查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "tweetId": {
+        "type": "string",
+        "description": "推文ID"
+      }
+    },
+    "required": [
+      "tweetId"
+    ]
+  }
+}

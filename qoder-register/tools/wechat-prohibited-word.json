@@ -1,0 +1,16 @@
+{
+  "name": "wechat-prohibited-word",
+  "description": "公众号违禁词检测，检查文案中的敏感表述",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "待检测文案内容"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

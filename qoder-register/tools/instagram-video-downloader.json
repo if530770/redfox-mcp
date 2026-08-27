@@ -1,0 +1,16 @@
+{
+  "name": "instagram-video-downloader",
+  "description": "根据视频链接下载Instagram视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Instagram视频链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

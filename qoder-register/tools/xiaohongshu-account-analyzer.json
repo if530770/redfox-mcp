@@ -1,0 +1,45 @@
+{
+  "name": "xiaohongshu-account-analyzer",
+  "description": "深度拆解小红书账号，输出七维度量化评分诊断报告与可导出HTML；当用户提供小红书号进行账号诊断、rednote分析、账号健康度评估、商业价值评估、多账号对比或制定优化策略时使用",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "userIds": {
+        "type": "string",
+        "description": "userIds"
+      },
+      "status": {
+        "type": "string",
+        "description": "status"
+      },
+      "message": {
+        "type": "string",
+        "description": "message"
+      },
+      "output_path": {
+        "type": "string",
+        "description": "output_path"
+      },
+      "query_type": {
+        "type": "string",
+        "description": "query_type"
+      },
+      "data": {
+        "type": "string",
+        "description": "data"
+      },
+      "accounts": {
+        "type": "number",
+        "description": "accounts"
+      },
+      "template_structure": {
+        "type": "string",
+        "description": "template_structure"
+      },
+      "account_count": {
+        "type": "number",
+        "description": "account_count"
+      }
+    }
+  }
+}

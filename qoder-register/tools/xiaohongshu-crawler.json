@@ -1,0 +1,28 @@
+{
+  "name": "xiaohongshu-crawler",
+  "description": "小红书作品爬取工具。根据关键词爬取小红书热门作品数据，支持按日期范围、排序方式筛选，结果以结构化表格展示。当用户需要爬取小红书作品、查询小红书热门内容、搜索小红书爆款笔记时使用。触发词：小红书爬取、小红书作品、小红书爆款、小红书搜索、小红书热门、小红书笔记查询。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "keyword"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "startDate"
+      },
+      "endDate": {
+        "type": "string",
+        "description": "endDate"
+      },
+      "sortType": {
+        "type": "string",
+        "description": "sortType"
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

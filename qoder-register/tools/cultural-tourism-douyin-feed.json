@@ -1,0 +1,32 @@
+{
+  "name": "cultural-tourism-douyin-feed",
+  "description": "文旅抖音信息源 — 搜索文旅相关抖音热门作品，按点赞量筛选最火内容，生成精美 HTML 报告。当用户需要文旅抖音、旅游攻略、景区热度、文旅资讯、文旅爆款内容时使用。触发词：文旅抖音、文旅信息源、文旅资讯、旅游抖音、景区视频、文旅爆款。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "keyword"
+      },
+      "pageNum": {
+        "type": "number",
+        "description": "pageNum"
+      },
+      "pageSize": {
+        "type": "number",
+        "description": "pageSize"
+      },
+      "startTime": {
+        "type": "string",
+        "description": "startTime"
+      },
+      "endTime": {
+        "type": "string",
+        "description": "endTime"
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

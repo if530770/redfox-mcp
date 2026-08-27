@@ -1,0 +1,21 @@
+{
+  "name": "wechat-title",
+  "description": "公众号爆款标题参考，查询同赛道爆款文章标题规律",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "赛道关键词"
+      },
+      "days": {
+        "type": "number",
+        "description": "查询天数",
+        "default": 7
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

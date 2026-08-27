@@ -1,0 +1,16 @@
+{
+  "name": "wechat-video-downloader",
+  "description": "根据链接下载视频号视频",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "视频号链接"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

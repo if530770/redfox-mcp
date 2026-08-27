@@ -1,0 +1,20 @@
+{
+  "name": "xiaohongshu-weeklytop",
+  "description": "小红书七日爆款笔记，查询指定日期的七日爆款榜单",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      },
+      "category": {
+        "type": "string",
+        "description": "分类"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}

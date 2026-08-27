@@ -1,0 +1,20 @@
+{
+  "name": "weibo-comment-search",
+  "description": "微博评论查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "weiboId": {
+        "type": "string",
+        "description": "微博ID"
+      },
+      "cursor": {
+        "type": "string",
+        "description": "分页游标"
+      }
+    },
+    "required": [
+      "weiboId"
+    ]
+  }
+}

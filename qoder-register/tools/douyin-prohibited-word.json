@@ -1,0 +1,16 @@
+{
+  "name": "douyin-prohibited-word",
+  "description": "抖音违禁词检测，检查文案中的敏感词",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "待检测文案内容"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

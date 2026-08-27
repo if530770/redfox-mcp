@@ -1,0 +1,32 @@
+{
+  "name": "youtube-comment",
+  "description": "YouTube视频评论查询",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "videoId": {
+        "type": "string",
+        "description": "YouTube视频ID"
+      },
+      "sortBy": {
+        "type": "string",
+        "description": "排序方式"
+      },
+      "languageCode": {
+        "type": "string",
+        "description": "语言代码"
+      },
+      "countryCode": {
+        "type": "string",
+        "description": "国家代码"
+      },
+      "continuationToken": {
+        "type": "string",
+        "description": "分页游标"
+      }
+    },
+    "required": [
+      "videoId"
+    ]
+  }
+}

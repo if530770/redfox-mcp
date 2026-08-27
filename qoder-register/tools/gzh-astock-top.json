@@ -1,0 +1,18 @@
+{
+  "name": "gzh-astock-top",
+  "description": "公众号A股爆文榜，查询A股相关公众号文章排行",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "offset": {
+        "type": "number",
+        "description": "偏移量",
+        "default": 0
+      }
+    }
+  }
+}

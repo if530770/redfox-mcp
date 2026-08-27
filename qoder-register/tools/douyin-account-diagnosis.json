@@ -1,0 +1,16 @@
+{
+  "name": "douyin-account-diagnosis",
+  "description": "抖音账号诊断工具，根据账号ID查询账号数据并生成诊断报告",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string",
+        "description": "抖音账号ID"
+      }
+    },
+    "required": [
+      "accountId"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "wechat-search",
+  "description": "公众号文章搜索，按关键词搜索公众号爆款文章",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "搜索关键词"
+      },
+      "startDate": {
+        "type": "string",
+        "description": "起始日期 YYYY-MM-DD"
+      },
+      "maxItems": {
+        "type": "number",
+        "description": "返回数量",
+        "default": 10
+      }
+    },
+    "required": [
+      "keyword"
+    ]
+  }
+}

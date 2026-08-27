@@ -1,0 +1,25 @@
+{
+  "name": "douyin-rise-ranking",
+  "description": "抖音涨粉榜，查询指定日期的账号涨粉排行",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "dateType": {
+        "type": "string",
+        "description": "日期类型：1=日榜, 2=周榜",
+        "default": "1"
+      },
+      "rankDate": {
+        "type": "string",
+        "description": "榜单日期 YYYY-MM-DD"
+      },
+      "category": {
+        "type": "string",
+        "description": "分类"
+      }
+    },
+    "required": [
+      "rankDate"
+    ]
+  }
+}
