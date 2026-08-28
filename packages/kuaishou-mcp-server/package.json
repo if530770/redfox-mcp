@@ -1,0 +1,28 @@
+{
+  "name": "redfox-mcp-server-kuaishou",
+  "version": "1.0.1",
+  "description": "快手数据 MCP Server — 搜索、账号、作品、评论、视频提取等5个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "kuaishou-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "kuaishou",
+    "快手",
+    "redfox",
+    "新媒体数据"
+  ]
+}

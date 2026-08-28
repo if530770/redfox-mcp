@@ -1,0 +1,30 @@
+{
+  "name": "redfox-mcp-server-ai",
+  "version": "1.0.1",
+  "description": "AI 工具 MCP Server — DeepSeek/豆包/Kimi 联网搜索、视频生成、图片写作、视频提示词等6个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "ai-tools-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "deepseek",
+    "doubao",
+    "kimi",
+    "ai",
+    "redfox",
+    "新媒体数据"
+  ]
+}

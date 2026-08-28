@@ -1,0 +1,28 @@
+{
+  "name": "redfox-mcp-server-weibo",
+  "version": "1.0.1",
+  "description": "微博数据 MCP Server — 热搜、实时搜、文章搜、评论搜索等4个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "weibo-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "weibo",
+    "微博",
+    "redfox",
+    "新媒体数据"
+  ]
+}

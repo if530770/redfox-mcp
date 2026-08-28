@@ -1,0 +1,30 @@
+{
+  "name": "redfox-mcp-server-overseas",
+  "version": "1.0.1",
+  "description": "海外平台 MCP Server — YouTube/Twitter/TikTok/Instagram 视频下载与评论分析等7个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "overseas-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "youtube",
+    "twitter",
+    "tiktok",
+    "instagram",
+    "redfox",
+    "新媒体数据"
+  ]
+}

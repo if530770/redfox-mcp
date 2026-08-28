@@ -1,0 +1,28 @@
+{
+  "name": "redfox-mcp-server-bilibili",
+  "version": "1.0.1",
+  "description": "B站数据 MCP Server — 关键词搜索、账号、作品集、评论、视频下载等6个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "bilibili-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "bilibili",
+    "b站",
+    "redfox",
+    "新媒体数据"
+  ]
+}
