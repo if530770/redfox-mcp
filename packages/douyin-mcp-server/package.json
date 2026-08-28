@@ -1,7 +1,7 @@
 {
   "name": "redfox-mcp-server-douyin",
-  "version": "1.0.1",
-  "description": "抖音数据 MCP Server — 热点趋势、爆款榜单、账号诊断、违禁词检测等14个工具",
+  "version": "1.0.2",
+  "description": "抖音数据 MCP Server — 热点趋势、爆款榜单、账号诊断、违禁词检测等12个工具",
   "author": "RedFox",
   "license": "MIT",
   "bin": {
