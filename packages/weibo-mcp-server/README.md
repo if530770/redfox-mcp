@@ -19,7 +19,7 @@
 ```json
 {
   "mcpServers": {
-    "weibo-mcp": {
+    "redfox-mcp-server-weibo": {
       "command": "npx",
       "args": ["-y", "redfox-mcp-server-weibo@latest"],
       "env": { "REDFOX_API_KEY": "your-api-key-here" }
