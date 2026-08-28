@@ -1,26 +1,30 @@
 #!/usr/bin/env node
 /**
- * RedFox MCP Server
- * 将 redfox-community 仓库的全部 Skill 封装为 MCP 工具
+ * douyin-mcp-server
+ * 抖音数据 MCP Server — 热点趋势、爆款榜单、账号诊断、违禁词检测
  * 协议：MCP (Model Context Protocol) over stdio，JSON-RPC 2.0
  *
- * 启动：REDFOX_API_KEY=ak_xxx node server.js
+ * 启动：REDFOX_API_KEY=ak_xxx npx -y douyin-mcp-server@latest
  */
 'use strict';
 
 const readline = require('readline');
-const { buildAllTools } = require('./src/build-tools');
-const { RedFoxApiError } = require('./src/redfox-client');
+const { buildAllTools } = require('redfox-mcp-server/src/build-tools');
+const { RedFoxApiError } = require('redfox-mcp-server/src/redfox-client');
 
-const SERVER_NAME = 'redfox-mcp';
-const SERVER_VERSION = '1.0.1';
+const SERVER_NAME = 'douyin-mcp';
+const SERVER_VERSION = '1.0.0';
 const PROTOCOL_VERSION = '2024-11-05';
-// 服务器支持的协议版本（按偏好排序）
 const SUPPORTED_PROTOCOLS = ['2025-06-18', '2025-03-26', '2024-11-05', '2024-10-07'];
 
-const { tools, skipped } = buildAllTools();
+// 分类过滤器：只加载抖音相关工具
+const PLATFORM_PREFIX = 'douyin';
+const PLATFORM_LABEL = '抖音';
 
-// ---------- MCP 工具注册表 ----------
+const { tools: allTools, skipped: allSkipped } = buildAllTools();
+const tools = allTools.filter(t => t.name.startsWith(PLATFORM_PREFIX + '-'));
+const skipped = allSkipped.filter(s => s.name.startsWith(PLATFORM_PREFIX + '-'));
+
 const toolMap = new Map(tools.map(t => [t.name, t]));
 
 // ---------- JSON-RPC 消息处理 ----------
@@ -29,11 +33,9 @@ function handleMessage(msg) {
 
   const { id, method, params } = msg;
 
-  // 通知类（无响应）：仅当 id 为 undefined/null 时才是通知
-  // 注意：JSON-RPC 请求 id 可以是 0，不能用 !id 判断！
   if (id === undefined || id === null) {
     if (method === 'notifications/initialized' || method === 'notifications/cancelled') {
-      return null; // 忽略
+      return null;
     }
     return null;
   }
@@ -41,7 +43,6 @@ function handleMessage(msg) {
   try {
     switch (method) {
       case 'initialize': {
-        // 回显客户端请求的协议版本（若在支持列表内），否则返回首选版本
         const requested = params?.protocolVersion;
         const negotiated = SUPPORTED_PROTOCOLS.includes(requested) ? requested : PROTOCOL_VERSION;
         return respond(id, {
@@ -69,9 +70,8 @@ function handleMessage(msg) {
         if (!tool) {
           return respondError(id, -32602, `Unknown tool: ${name}`);
         }
-        // 异步执行（工具可能耗时较长）
         runTool(tool, args, id);
-        return null; // 响应将通过后续 send 发送
+        return null;
       }
 
       default:
@@ -82,7 +82,6 @@ function handleMessage(msg) {
   }
 }
 
-/** 异步执行工具并发送结果（长任务不阻塞消息循环） */
 async function runTool(tool, args, id) {
   try {
     const result = await tool.handler(args);
@@ -101,7 +100,6 @@ async function runTool(tool, args, id) {
   }
 }
 
-// ---------- JSON-RPC 响应工具 ----------
 function respond(id, result) {
   return JSON.stringify({ jsonrpc: '2.0', id, result });
 }
@@ -117,15 +115,14 @@ function send(payload) {
 // ---------- 启动 ----------
 const rl = readline.createInterface({ input: process.stdin });
 
-// 启动日志（stderr，避免污染 stdout 协议通道）
-console.error(`[redfox-mcp] RedFox MCP Server v${SERVER_VERSION} 已启动`);
-console.error(`[redfox-mcp] 工具数量: ${tools.length}, 跳过: ${skipped.length}`);
+console.error(`[${SERVER_NAME}] ${PLATFORM_LABEL}数据 MCP Server v${SERVER_VERSION} 已启动`);
+console.error(`[${SERVER_NAME}] 工具数量: ${tools.length}`);
 if (skipped.length) {
-  console.error(`[redfox-mcp] 跳过工具: ${skipped.map(s => `${s.name}(${s.reason})`).join(', ')}`);
+  console.error(`[${SERVER_NAME}] 跳过工具: ${skipped.map(s => `${s.name}(${s.reason})`).join(', ')}`);
 }
 if (!process.env.REDFOX_API_KEY) {
-  console.error('[redfox-mcp] 警告: 未设置 REDFOX_API_KEY 环境变量，工具调用将失败');
-  console.error('[redfox-mcp] 设置方式: 前往 https://redfox.hk/settings/api-keys 获取后 export REDFOX_API_KEY=ak_xxx');
+  console.error(`[${SERVER_NAME}] 警告: 未设置 REDFOX_API_KEY 环境变量`);
+  console.error(`[${SERVER_NAME}] 获取: https://redfox.hk/settings/api-keys`);
 }
 
 rl.on('line', (line) => {
@@ -135,7 +132,7 @@ rl.on('line', (line) => {
   try {
     msg = JSON.parse(line);
   } catch {
-    return; // 忽略非法 JSON
+    return;
   }
   const out = handleMessage(msg);
   if (out) send(out);

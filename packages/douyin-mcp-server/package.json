@@ -1,0 +1,18 @@
+{
+  "name": "redfox-mcp-server-douyin",
+  "version": "1.0.0",
+  "description": "抖音数据 MCP Server — 热点趋势、爆款榜单、账号诊断、违禁词检测等14个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "douyin-mcp": "server.js"
+  },
+  "files": ["server.js"],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "model-context-protocol", "douyin", "tiktok", "redfox", "新媒体数据"]
+}

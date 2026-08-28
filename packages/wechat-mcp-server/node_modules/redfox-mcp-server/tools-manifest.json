@@ -1,0 +1,4237 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-08-27T03:11:06.105Z",
+  "tools": [
+    {
+      "name": "account-video-downloader",
+      "description": "多平台账号主页视频提取器 — 输入平台名称和账号id/链接，自动拉取抖音/快手/B站/YouTube 四大平台主页作品，解析下载链接，支持批量下载。适用场景：竞品账号内容拆解与逐帧学习、收藏喜欢的创作者全部作品避免被删、批量搬运素材二次剪辑创作、保存自己账号作品做本地备份防丢失、课程/教程类视频离线囤货反复看、达人合作前快速拉取对方作品做背调分析。触发词：主页视频下载、批量下载视频、账号视频提取、",
+      "skillDir": "account-video-downloader",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "base.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": []
+        },
+        {
+          "file": "bilibili.py",
+          "headers": [
+            "REDFOX_API_KEY"
+          ],
+          "payloadKeys": [
+            "accountUrl",
+            "page",
+            "pageSize",
+            "order",
+            "source",
+            "url"
+          ],
+          "args": []
+        },
+        {
+          "file": "douyin.py",
+          "headers": [
+            "REDFOX_API_KEY"
+          ],
+          "payloadKeys": [
+            "shortId",
+            "pageNum",
+            "pageSize",
+            "source",
+            "url"
+          ],
+          "args": []
+        },
+        {
+          "file": "kuaishou.py",
+          "headers": [
+            "REDFOX_API_KEY"
+          ],
+          "payloadKeys": [
+            "kwaiId",
+            "page",
+            "size",
+            "source",
+            "url"
+          ],
+          "args": []
+        },
+        {
+          "file": "main.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": [
+            {
+              "name": "platform",
+              "default": "DEFAULT_PAGE_SIZE"
+            },
+            {
+              "name": "page",
+              "default": "1"
+            },
+            {
+              "name": "date-start",
+              "default": ""
+            },
+            {
+              "name": "json",
+              "default": "DEFAULT_RATE_LIMIT"
+            }
+          ]
+        },
+        {
+          "file": "youtube.py",
+          "headers": [
+            "REDFOX_API_KEY"
+          ],
+          "payloadKeys": [
+            "channel",
+            "source",
+            "continuation",
+            "success",
+            "account",
+            "works",
+            "url"
+          ],
+          "args": []
+        },
+        {
+          "file": "__init__.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "ai-intelligence-investigator",
+      "description": "深度A股情报调查与分析工具，支持A股情报调查、竞品分析、舆情监测、人物背景调查、信息交叉验证，生成结构化调查报告。当用户需要调查A股公司/行业/概念、调查竞品、追踪热点事件、了解人物背景、验证信息真实性时使用。触发词：A股情报、股票调查、财报分析、概念追踪、资金流向、情报调查、竞品分析、舆情调查、背景调查、信息验证、多源搜索。",
+      "skillDir": "ai-intelligence-investigator",
+      "status": "no-scripts"
+    },
+    {
+      "name": "bili-ai-feed",
+      "description": "B站AI信息源 — 每日扫描B站AI相关账号，按点赞量发现爆款视频，智能聚类话题后生成包含封面图、互动数据与订阅支持的HTML日报。同时基于热门话题执行AI情报调查，采用多引擎搜索与交叉验证，输出结构化调查报告。支持用户自定义关键词定向查询。⚠️数据每日15:00更新前一天数据，目标日期无数据时必须先告知用户并等待确认后才能调用接口，禁止自动获取。当用户需要AI-B站日报、B站爆款、AI-B站热点",
+      "skillDir": "bili-ai-feed",
+      "status": "no-scripts"
+    },
+    {
+      "name": "bilibili-comment",
+      "description": "B站评论分析工具。输入B站视频链接或BV号即可获取一级评论数据，支持分页浏览、评论情感分析（积极/负面/需求/竞品），生成精美 HTML 报告。当用户需要查看B站视频评论、分析评论舆情、了解用户反馈时使用。触发词：B站评论、B站视频评论、评论查询、评论分析、评论舆情、看评论、bilibili评论。",
+      "skillDir": "bilibili-comment",
+      "status": "api",
+      "api": {
+        "script": "bili_comment_search.py",
+        "endpoint": "https://redfox.hk/story/api/bili/commentSubmit",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "bvid",
+          "source",
+          "opusId",
+          "sortType",
+          "dataNum",
+          "offset"
+        ],
+        "args": [
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "sort",
+            "default": "1"
+          },
+          {
+            "name": "no-html",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/bili/commentSubmit",
+          "https://redfox.hk/story/api/bili/commentResult",
+          "https://redfox.hk/story/api/bili/workDetail"
+        ]
+      }
+    },
+    {
+      "name": "bilibili-keywords-accounts",
+      "description": "B站关键词搜账号工具。根据用户输入的关键词查询B站相关账号，支持按综合排序或粉丝数排序，返回账号列表（含粉丝数、等级、简介等信息）。当用户需要搜索B站账号、查找B站UP主、找B站同类账号时使用。",
+      "skillDir": "bilibili-keywords-accounts",
+      "status": "api",
+      "api": {
+        "script": "search_bili_user.py",
+        "endpoint": "https://redfox.hk/story/api/bili/userSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "order",
+          "page",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "order",
+            "default": "fans"
+          },
+          {
+            "name": "page",
+            "default": "1"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/bili/userSearch"
+        ]
+      }
+    },
+    {
+      "name": "bilibili-keywords-search",
+      "description": "B站关键词搜作品工具。根据用户输入的关键词调用 Redfox 接口搜索B站最新视频，支持按排序方式和发布时间筛选，返回新鲜数据（非缓存/历史数据）。当用户要求搜索B站最新内容、查看某关键词下的视频数据时使用。触发词：B站搜索、B站最新视频、B站热门、B站搜作品、bilibili搜索。",
+      "skillDir": "bilibili-keywords-search",
+      "status": "api",
+      "api": {
+        "script": "search_bili_realtime.py",
+        "endpoint": "https://redfox.hk/story/api/bili/search",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "sortType",
+          "publishTime",
+          "page",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "sort",
+            "default": "1"
+          },
+          {
+            "name": "time",
+            "default": "7"
+          },
+          {
+            "name": "page",
+            "default": "1"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/bili/search"
+        ]
+      }
+    },
+    {
+      "name": "bilibili-portfolio-search",
+      "description": "B站账号作品列表实时查询工具。根据B站UP主的UID获取该UP主发布的最新视频作品列表，支持游标翻页浏览更多作品。当用户想查看某个B站UP主的作品列表、B站账号视频、UP主投稿列表时使用。",
+      "skillDir": "bilibili-portfolio-search",
+      "status": "api",
+      "api": {
+        "script": "fetch_bili_user_works.py",
+        "endpoint": "https://redfox.hk/story/api/bili/userWorkList",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "uid",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "cursor",
+            "default": ""
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/bili/userWorkList"
+        ]
+      }
+    },
+    {
+      "name": "bilibili-search-download",
+      "description": "B站搜索批量下载工具。输入关键词即可搜索B站全站视频，支持按播放量/点赞/时间排序，搜索后自动批量获取全部高清下载链接。当用户需要查找B站视频、搜索B站内容、下载B站视频、采集B站素材时使用。触发词：B站搜索、bilibili搜索、B站下载、B站视频下载、b站搜视频、B站找素材、下载B站、bilibili下载。",
+      "skillDir": "bilibili-search-download",
+      "status": "api",
+      "api": {
+        "script": "bilibili_search.py",
+        "endpoint": "https://redfox.hk/story/api/bili/data/workSearch",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "page",
+          "pageSize",
+          "order",
+          "dateRange",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "default": "10"
+          },
+          {
+            "name": "order",
+            "default": "play"
+          },
+          {
+            "name": "date-range",
+            "default": "7d"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/bili/data/workSearch"
+        ]
+      }
+    },
+    {
+      "name": "bilibili-video-downloader",
+      "description": "B站视频下载 — 粘贴B站视频链接，一键解析返回无水印视频下载链接。当用户需要下载B站视频、保存B站视频、获取B站视频直链时使用。触发词：B站视频下载、bilibili视频下载、B站视频解析、下载B站视频、哔哩哔哩视频下载。",
+      "skillDir": "bilibili-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/bilibili",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "url",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/bilibili"
+        ]
+      }
+    },
+    {
+      "name": "cn-last30days",
+      "description": "中国社媒平台话题研究工具。从小红书、抖音、公众号三大平台搜索近30天真实讨论，跨平台对比分析舆情趋势。当用户需要研究中国社交媒体热点话题、分析舆情趋势、对比品牌口碑时使用。触发词：小红书热点、抖音趋势、公众号舆情、跨平台分析、社媒研究、话题分析、舆情监测。",
+      "skillDir": "cn-last30days",
+      "status": "api",
+      "api": {
+        "script": "cn_last30days.py",
+        "endpoint": "https://redfox.hk/story/api/multiPlatform/workSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source",
+          "startDate",
+          "endDate",
+          "total_items",
+          "date_range",
+          "platforms"
+        ],
+        "args": [
+          {
+            "name": "platforms",
+            "default": "xhs"
+          },
+          {
+            "name": "count",
+            "default": "DEFAULT_COUNT"
+          },
+          {
+            "name": "days",
+            "default": "30"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-dir",
+            "default": "str(Path.home("
+          },
+          {
+            "name": "api-key",
+            "default": "None"
+          },
+          {
+            "name": "max-items",
+            "default": "50"
+          },
+          {
+            "name": "from-json",
+            "default": "None"
+          },
+          {
+            "name": "report-file",
+            "default": "None"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/multiPlatform/workSearch"
+        ]
+      }
+    },
+    {
+      "name": "cultural-tourism-bilibili-feed",
+      "description": "文旅B站信息源 — 搜索文旅相关B站热门视频，按点赞量筛选最火内容，生成精美 HTML 报告。当用户需要文旅B站、旅游攻略、景区热度、文旅资讯、文旅爆款内容时使用。触发词：文旅B站、文旅信息源、文旅资讯、旅游B站、景区视频、文旅爆款。",
+      "skillDir": "cultural-tourism-bilibili-feed",
+      "status": "api",
+      "api": {
+        "script": "cultural_tourism_bilibili_report.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryBiliPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source",
+          "startTime",
+          "endTime"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "default": ""
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryBiliPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "cultural-tourism-douyin-feed",
+      "description": "文旅抖音信息源 — 搜索文旅相关抖音热门作品，按点赞量筛选最火内容，生成精美 HTML 报告。当用户需要文旅抖音、旅游攻略、景区热度、文旅资讯、文旅爆款内容时使用。触发词：文旅抖音、文旅信息源、文旅资讯、旅游抖音、景区视频、文旅爆款。",
+      "skillDir": "cultural-tourism-douyin-feed",
+      "status": "api",
+      "api": {
+        "script": "cultural_tourism_douyin_report.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryDyPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source",
+          "startTime",
+          "endTime"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "default": ""
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryDyPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "cultural-tourism-wechat-feed",
+      "description": "文旅公众号信息源 — 搜索文旅相关公众号热门文章，按阅读量筛选最火内容，生成精美 HTML 报告。当用户需要文旅公众号、旅游攻略、景区热度、文旅资讯、文旅爆款内容时使用。触发词：文旅公众号、文旅信息源、文旅资讯、旅游公众号、景区文章、文旅爆款。",
+      "skillDir": "cultural-tourism-wechat-feed",
+      "status": "api",
+      "api": {
+        "script": "cultural_tourism_report.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryGzhPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source",
+          "startTime",
+          "endTime"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "default": ""
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryGzhPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "cultural-tourism-xiaohongshu-feed",
+      "description": "文旅小红书信息源 — 搜索文旅相关小红书热门笔记，按点赞量筛选最火内容，生成精美 HTML 报告。当用户需要文旅小红书、旅游攻略、景区热度、文旅资讯、文旅爆款内容时使用。触发词：文旅小红书、文旅信息源、文旅资讯、旅游小红书、景区笔记、文旅爆款。",
+      "skillDir": "cultural-tourism-xiaohongshu-feed",
+      "status": "api",
+      "api": {
+        "script": "cultural_tourism_xiaohongshu_report.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryXhsPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source",
+          "startTime",
+          "endTime"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "default": ""
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryXhsPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "deepseek-websearch",
+      "description": "Deepseek 联网搜索工具。一键调用 AI 联网搜索能力，快速获取实时信息。当用户需要使用 Deepseek 搜索、联网搜索、AI 搜索获取实时信息时使用。触发词：Deepseek搜索、deepseek websearch、联网搜索、AI搜索、ds搜索。",
+      "skillDir": "deepseek-websearch",
+      "status": "api",
+      "api": {
+        "script": "deepseek_search.py",
+        "endpoint": "https://redfox.hk/story/api/deepSearch",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "inquiryText",
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/deepSearch"
+        ]
+      }
+    },
+    {
+      "name": "doubao-websearch",
+      "description": "豆包 WebSearch 搜索工具。基于红狐 API 调用豆包联网搜索能力，提交查询后自动轮询等待结果返回。当用户需要使用豆包搜索、联网搜索、AI 搜索获取实时信息时使用。触发词：豆包搜索、豆包websearch、联网搜索、AI搜索、doubao搜索。",
+      "skillDir": "doubao-websearch",
+      "status": "api",
+      "api": {
+        "script": "doubao_search.py",
+        "endpoint": "https://redfox.hk/story/api/doubaoSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "inquiry_text",
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/doubaoSearch"
+        ]
+      }
+    },
+    {
+      "name": "douyin-account-diagnosis",
+      "description": "一键诊断抖音账号运营健康度。基于红狐数据服务获取账号画像与近期作品数据，从账号基础画像、内容生产力、互动健康度、内容质量、内容趋势、粉丝质量六个维度进行量化诊断，输出100分制综合评分、维度得分明细、六类风险预警和针对性优化建议。触发词：当用户提到'诊断抖音账号'、'抖音账号分析'、'抖音体检'、'抖音账号评估'、'查看XX抖音数据'、'分析这个抖音号'时使用",
+      "skillDir": "douyin-account-diagnosis",
+      "status": "api",
+      "api": {
+        "script": "douyin_diagnosis.py",
+        "endpoint": "https://redfox.hk/story/api/dyUser/queryData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dyUser/queryData"
+        ]
+      }
+    },
+    {
+      "name": "douyin-ai-feed",
+      "description": "AI抖音信息源 — 每日自动扫描抖音 AI 相关作品，按互动量（点赞/分享/评论）筛选最火内容，智能聚类生成精美 HTML 日报，支持封面图、数据指标和每日订阅。当用户需要 AI 抖音日报、抖音AI热点、AI抖音内容、抖音信息源、douyin ai feed 时使用。",
+      "skillDir": "douyin-ai-feed",
+      "status": "api",
+      "api": {
+        "script": "fetch_douyin_ai.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryDyAiMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "DEFAULT_KEYWORD"
+          },
+          {
+            "name": "page-size",
+            "default": "PAGE_SIZE"
+          },
+          {
+            "name": "date",
+            "default": "datetime.now("
+          },
+          {
+            "name": "start-time",
+            "default": "None"
+          },
+          {
+            "name": "end-time",
+            "default": "None"
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryDyAiMsgs"
+        ]
+      }
+    },
+    {
+      "name": "douyin-content-surge",
+      "description": "抖音每日点赞飙升榜查询工具。日度收录全平台抖音作品，输出单日新增点赞TOP50榜单，支持按赛道分类查询、历史日期回溯（最多30天）。当用户查询抖音飙升榜、抖音点赞飙升、抖音飙升排名、抖音飙升榜时使用。触发词：抖音飙升榜、点赞飙升、飙升排名、飙升榜、抖音飙升、抖音新增。",
+      "skillDir": "douyin-content-surge",
+      "status": "api",
+      "api": {
+        "script": "douyin_daily_increment.py",
+        "endpoint": "https://redfox.hk/story/api/dy/search/hotContentRank",
+        "method": "POST",
+        "headers": [],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [
+          {
+            "name": "type",
+            "default": "全部"
+          },
+          {
+            "name": "start",
+            "default": "None"
+          },
+          {
+            "name": "full",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dy/search/hotContentRank"
+        ]
+      }
+    },
+    {
+      "name": "douyin-daily-hot",
+      "description": "抖音每日最热作品榜查询工具。日度收录全平台抖音作品，输出单日点赞TOP50榜单，支持按赛道分类查询、历史日期回溯（最多30天）、个性化订阅推送。当用户查询抖音热榜、抖音日榜、抖音爆款作品、抖音赛道排名、抖音达人排名、抖音热门内容时使用。触发词：抖音热榜、抖音日榜、抖音排名、抖音爆款、抖音最热、抖音TOP榜、抖音赛道榜单。",
+      "skillDir": "douyin-daily-hot",
+      "status": "api",
+      "api": {
+        "script": "douyin_daily_hot.py",
+        "endpoint": "https://redfox.hk/story/api/dy/search/likesRank",
+        "method": "POST",
+        "headers": [],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [
+          {
+            "name": "type",
+            "default": "全部"
+          },
+          {
+            "name": "start",
+            "default": "None"
+          },
+          {
+            "name": "end",
+            "default": "None"
+          },
+          {
+            "name": "full",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dy/search/likesRank"
+        ]
+      }
+    },
+    {
+      "name": "douyin-hot-trend",
+      "description": "专注于获取抖音最新的热榜数据，每小时更新，包含热点事件、热度值和跳转链接；支持查询近7天、近30天历史热榜，并支持订阅定时推送。",
+      "skillDir": "douyin-hot-trend",
+      "status": "api",
+      "api": {
+        "script": "gen_douyin_hot_html.py",
+        "endpoint": "https://redfox.hk/story/api/hotSpot/getListByPlatform",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "platform",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "json-file",
+            "default": "20"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/hotSpot/getListByPlatform"
+        ]
+      }
+    },
+    {
+      "name": "douyin-prohibited-word",
+      "description": "检测文案、文件或网页中的抖音违禁词并加粗显示，提供违禁词替换建议和仅替换违禁词后的文案；当用户需要查询抖音平台违禁词、检查抖音笔记文案是否包含敏感词、或希望获得安全替换词和修改后文案时使用。",
+      "skillDir": "douyin-prohibited-word",
+      "status": "api",
+      "api": {
+        "script": "check_sensitive_words.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "platform",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "content"
+          },
+          {
+            "name": "file"
+          },
+          {
+            "name": "url"
+          },
+          {
+            "name": "extract-only"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+        ]
+      }
+    },
+    {
+      "name": "douyin-rise-ranking",
+      "description": "获取抖音涨粉账号推荐数据，支持日榜/周榜/月榜按分类查询抖音账号涨粉排行，含总粉丝数、涨粉率与粉丝增量；当用户需要查询抖音涨粉榜、分析各领域账号涨粉趋势、了解粉丝增长数据或获取运营参考时使用",
+      "skillDir": "douyin-rise-ranking",
+      "status": "api",
+      "api": {
+        "script": "gzh_growth_fetcher.py",
+        "endpoint": "https://redfox.hk/story/api/dyData/getDyRiseFansRank",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "dateType",
+          "rankDate",
+          "category",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "rank_type",
+            "default": "day"
+          },
+          {
+            "name": "rank_date",
+            "default": "None"
+          },
+          {
+            "name": "category",
+            "default": "None"
+          },
+          {
+            "name": "keyword",
+            "default": "None"
+          },
+          {
+            "name": "top_n",
+            "default": "50"
+          },
+          {
+            "name": "start",
+            "default": "1"
+          },
+          {
+            "name": "list_categories"
+          },
+          {
+            "name": "raw"
+          },
+          {
+            "name": "from_cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dyData/getDyRiseFansRank"
+        ]
+      }
+    },
+    {
+      "name": "douyin-search",
+      "description": "抖音作品查询工具。根据关键词搜索抖音热门爆款作品，支持按日期范围筛选，结果以结构化表格展示。当用户查找抖音热门内容、搜索抖音爆款视频、查询抖音作品数据时使用。触发词：抖音作品查询、抖音爆款、抖音热门、抖音热榜、抖音搜索、爆款视频、热门视频。",
+      "skillDir": "douyin-search",
+      "status": "api",
+      "api": {
+        "script": "search_douyin.py",
+        "endpoint": "https://redfox.hk/story/api/dy/data/searchWork",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source",
+          "pageNum",
+          "pageSize"
+        ],
+        "args": [
+          {
+            "name": "start-date",
+            "default": ""
+          },
+          {
+            "name": "end-date",
+            "default": ""
+          },
+          {
+            "name": "page-num",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "default": "50"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dy/data/searchWork"
+        ]
+      }
+    },
+    {
+      "name": "douyin-similar-account",
+      "description": "抖音相似账号推荐工具，输入抖音账号名称或账号ID，通过红狐API接口获取本账号数据、内容数据和相似账号推荐数据，深度分析共通点、差异点和优化建议。当用户提到\"推荐抖音相似账号\"、\"找抖音对标\"、\"抖音同类账号\"、\"抖音竞品分析\"、\"找抖音同行\"时使用。",
+      "skillDir": "douyin-similar-account",
+      "status": "api",
+      "api": {
+        "script": "douyin_similar_account.py",
+        "endpoint": "https://redfox.hk/story/api/dyUser/querySimilarAccounts",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "account_id"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dyUser/querySimilarAccounts"
+        ]
+      }
+    },
+    {
+      "name": "douyin-subscribe",
+      "description": "抖音账号订阅追踪 — 通过抖音号订阅账号（最多20个），Agent 每日 9:00 自动拉取并生成 HTML 报告。账号 ID 直接内置于自动化命令中，无需文件存储。支持多抖音号批量订阅，自动生成精美 HTML 作品报告，终端/Markdown 表格按账号依次展示作品标题、收藏、评论、分享、点赞、发布时间等数据。当用户订阅抖音账号、追踪抖音作品更新、监控抖音竞品账号时使用。触发词：抖音订阅、抖音账",
+      "skillDir": "douyin-subscribe",
+      "status": "api",
+      "api": {
+        "script": "subscribe.py",
+        "endpoint": "https://redfox.hk/story/api/dy/data/listWorkByAccount",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "accountId",
+          "accountName",
+          "category",
+          "shortId",
+          "pageNum",
+          "pageSize",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "name",
+            "default": ""
+          },
+          {
+            "name": "category",
+            "default": "关注账号"
+          },
+          {
+            "name": "accounts",
+            "default": ""
+          },
+          {
+            "name": "date",
+            "default": ""
+          },
+          {
+            "name": "date-start",
+            "default": ""
+          },
+          {
+            "name": "date-end",
+            "default": ""
+          },
+          {
+            "name": "markdown",
+            "default": ""
+          },
+          {
+            "name": "api-key"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dy/data/listWorkByAccount"
+        ]
+      }
+    },
+    {
+      "name": "douyin-top-account",
+      "description": "抖音每日最具影响力账号榜单追踪分析工具；日榜每日17:30更新/回溯7天，周榜每周一17:30更新/回溯3周，月榜每月2号9点更新/回溯3月；当用户需要查询抖音账号排名、抖音日榜/周榜/月榜、抖音赛道TOP账号或下载榜单报告时使用",
+      "skillDir": "douyin-top-account",
+      "status": "api",
+      "api": {
+        "script": "fetch_rank.py",
+        "endpoint": "https://redfox.hk/story/api/dyData/query",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "dateType",
+          "rankDate",
+          "type",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "query",
+            "default": ""
+          },
+          {
+            "name": "period",
+            "default": "None"
+          },
+          {
+            "name": "date",
+            "default": ""
+          },
+          {
+            "name": "category",
+            "default": ""
+          },
+          {
+            "name": "limit",
+            "default": "20"
+          },
+          {
+            "name": "output",
+            "default": ""
+          },
+          {
+            "name": "format",
+            "default": "markdown"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dyData/query"
+        ]
+      }
+    },
+    {
+      "name": "douyin-video-downloader",
+      "description": "抖音账号视频批量下载器 — 输入抖音号，自动拉取账号全部作品并解析无水印下载链接，支持批量一键下载到本地。适用场景：竞品账号内容拆解与逐帧学习、收藏喜欢的创作者全部作品避免被删、批量搬运素材二次剪辑创作、保存自己账号作品做本地备份防丢失、课程/教程类视频离线囤货反复看、甲方要求提供无水印源文件、达人合作前快速拉取对方作品做背调分析。触发词：抖音主页下载、抖音视频下载、抖音批量下载、抖音无水印下载、",
+      "skillDir": "douyin-video-downloader",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "douyin_video_downloader.py",
+          "headers": [
+            "REDFOX_API_KEY",
+            "X-API-KEY"
+          ],
+          "payloadKeys": [
+            "shortId",
+            "pageNum",
+            "pageSize",
+            "source",
+            "url"
+          ],
+          "args": [
+            {
+              "name": "account",
+              "default": "DEFAULT_PAGE_SIZE"
+            },
+            {
+              "name": "page",
+              "default": "1"
+            },
+            {
+              "name": "date-start",
+              "default": ""
+            },
+            {
+              "name": "json",
+              "default": "DEFAULT_RATE_LIMIT"
+            },
+            {
+              "name": "api-key"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "douyin-weekly-surge",
+      "description": "抖音七日点赞飙升榜查询工具。周度收录全平台抖音作品，输出七日新增点赞TOP50榜单，支持按赛道分类查询、历史日期回溯（最多30天）。当用户查询抖音七日飙升榜、抖音周榜飙升、抖音七日点赞飙升、抖音周度飙升榜时使用。触发词：抖音七日飙升榜、七日点赞飙升、周度飙升排名、周榜飙升、抖音七日新增、抖音周榜飙升。",
+      "skillDir": "douyin-weekly-surge",
+      "status": "api",
+      "api": {
+        "script": "douyin_weekly_surge.py",
+        "endpoint": "https://redfox.hk/story/api/dy/search/hotContentRank",
+        "method": "POST",
+        "headers": [],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [
+          {
+            "name": "type",
+            "default": "全部"
+          },
+          {
+            "name": "start",
+            "default": "None"
+          },
+          {
+            "name": "full",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/dy/search/hotContentRank"
+        ]
+      }
+    },
+    {
+      "name": "douyin-works-crawler",
+      "description": "抖音作品爬取工具，输入抖音名称或抖音ID，输出抖音账号基础信息和近期作品内容列表（最多50条）。当用户提到\"爬取抖音作品\"、\"抖音作品列表\"、\"查看抖音视频\"、\"抖音内容采集\"、\"抓取抖音作品\"时使用。",
+      "skillDir": "douyin-works-crawler",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "douyin_works_fetcher.py",
+          "headers": [
+            "X-API-KEY"
+          ],
+          "payloadKeys": [
+            "accountName",
+            "source",
+            "accountId",
+            "success",
+            "account",
+            "works"
+          ],
+          "args": [
+            {
+              "name": "account",
+              "default": "markdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "geo-analyzer",
+      "description": "GEO（生成式引擎优化）品牌分析工具。自动向豆包、Kimi、DeepSeek 三个 AI 搜索引擎提问，分析品牌在 AI 回答中的出现率、情绪、信源引用、竞品对比，生成交互式 HTML 报告。当用户需要分析品牌在 AI 搜索引擎中的表现、GEO 优化、AI 搜索品牌监测、品牌 AI 可见度分析时使用。触发词：GEO分析、品牌AI搜索分析、AI搜索引擎优化、品牌可见度、GEO、geo analyze",
+      "skillDir": "geo-analyzer",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "geo_analyze.py",
+          "headers": [],
+          "payloadKeys": [
+            "brand",
+            "aliases",
+            "competitors",
+            "platforms",
+            "queries",
+            "per_answer",
+            "metrics",
+            "mention_matrix",
+            "positive",
+            "neutral",
+            "negative"
+          ],
+          "args": [
+            {
+              "name": "brand",
+              "default": "[]"
+            },
+            {
+              "name": "competitors",
+              "default": "[]"
+            },
+            {
+              "name": "search-results",
+              "default": "os.path.join(os.path.dirname(os.path.abspath(__file__"
+            },
+            {
+              "name": "ai-analysis",
+              "default": "None"
+            },
+            {
+              "name": "output-dir",
+              "default": "None"
+            }
+          ]
+        },
+        {
+          "file": "geo_report.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": [
+            {
+              "name": "analysis",
+              "default": "os.path.join(os.path.dirname(os.path.abspath(__file__"
+            },
+            {
+              "name": "search-results",
+              "default": "os.path.join(os.path.dirname(os.path.abspath(__file__"
+            },
+            {
+              "name": "output",
+              "default": "None"
+            }
+          ]
+        },
+        {
+          "file": "geo_search.py",
+          "headers": [],
+          "payloadKeys": [
+            "query",
+            "platform",
+            "query_index",
+            "question",
+            "content",
+            "sources",
+            "status"
+          ],
+          "args": [
+            {
+              "name": "queries",
+              "default": "doubao"
+            },
+            {
+              "name": "output",
+              "default": "None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "global-ai-news-brief",
+      "description": "全球AI新闻简报 — 一个关键词同时搜索抖音、小红书、公众号、B站、快手、视频号、今日头条、TikTok、Instagram、X(Twitter)、YouTube 共 11 大平台，跨平台聚合后由 AI 生成智能摘要、热点聚类、舆情分析和深度解读报告，输出终端表格 + 交互式 HTML 报告。包含详细信息源列表，适用于各种AI agent进行社媒资讯分析。当用户需要新闻搜索、舆情分析、热点追踪、跨",
+      "skillDir": "global-ai-news-brief",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "fetch_all.py",
+          "headers": [
+            "X-API-KEY"
+          ],
+          "payloadKeys": [
+            "platform",
+            "total"
+          ],
+          "args": [
+            {
+              "name": "o",
+              "default": "/tmp/news_intel_result.json"
+            },
+            {
+              "name": "platforms",
+              "default": "None"
+            },
+            {
+              "name": "pretty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gzh-ai-feed",
+      "description": "AI公众号信息源 — Daily scan of AI WeChat public accounts, finding the hottest articles by read count, auto-clustering into topics, and generating a styled HTML report with cover images, metrics, search, and",
+      "skillDir": "gzh-ai-feed",
+      "status": "no-scripts"
+    },
+    {
+      "name": "gzh-astock-top",
+      "description": "A股公众号大V工具，输入日期获取A股领域公众号大V账号30个及账号数据（平均阅读、红狐指数等），同时获取每个账号最新一篇文章及文章数据。当用户提到\"A股公众号\"、\"股市大V\"、\"A股账号\"、\"股票公众号榜单\"、\"A股公众号大V\"时使用。",
+      "skillDir": "gzh-astock-top",
+      "status": "api",
+      "api": {
+        "script": "verify_search_user.py",
+        "endpoint": "https://redfox.hk/story/api/gzhData/searchUser",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "offset",
+          "sortType"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzhData/searchUser",
+          "https://redfox.hk/story/api/gzhUser/query"
+        ]
+      }
+    },
+    {
+      "name": "gzh-search",
+      "description": "公众号搜索爬虫 — 通过关键词搜索微信公众号文章，终端表格展示（标题/作者/阅读/点赞/分享/收藏/发布时间/文章链接），自动导出 CSV 并生成交互式 HTML 报告。当用户需要搜索、爬取或浏览公众号文章时使用；也适用于行业热点追踪、竞品内容分析、素材灵感搜集等场景。",
+      "skillDir": "gzh-search",
+      "status": "no-scripts"
+    },
+    {
+      "name": "gzh-subscribe",
+      "description": "微信公众号文章订阅 — 每天 6 点，盯梢竞对、同类、关注账号，一份你订阅的公众号文章推送。",
+      "skillDir": "gzh-subscribe",
+      "status": "no-scripts"
+    },
+    {
+      "name": "image-gen",
+      "description": "AI 图片生成器 — 基于 gpt-image-2 模型，支持文生图与图生图，开箱即用。",
+      "skillDir": "image-gen",
+      "status": "no-scripts"
+    },
+    {
+      "name": "instagram-video-downloader",
+      "description": "Instagram视频下载 — 粘贴 Instagram 视频链接，一键解析返回无水印视频下载链接。当用户需要下载 Instagram 视频、保存 IG 视频、获取 Instagram 视频直链时使用。触发词：Instagram视频下载、IG视频下载、Ins视频下载、Instagram视频解析、下载Instagram视频、reel下载。",
+      "skillDir": "instagram-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/instagram",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/instagram"
+        ]
+      }
+    },
+    {
+      "name": "investor-distiller",
+      "description": ">",
+      "skillDir": "investor-distiller",
+      "status": "api",
+      "api": {
+        "script": "gzh.py",
+        "endpoint": "https://redfox.hk/story/api/gzhData/queryWorkList",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source",
+          "account",
+          "sortType",
+          "offset",
+          "workUuid"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzhData/queryWorkList",
+          "https://redfox.hk/story/api/gzhData/queryWork"
+        ]
+      }
+    },
+    {
+      "name": "kimi-websearch",
+      "description": "Kimi WebSearch 搜索工具。基于红狐 API 调用 Kimi 联网搜索能力，提交查询后自动轮询等待结果返回。当用户需要使用 Kimi 搜索、联网搜索、AI 搜索获取实时信息时使用。触发词：kimi搜索、kimi websearch、联网搜索、AI搜索、kimi搜索。",
+      "skillDir": "kimi-websearch",
+      "status": "api",
+      "api": {
+        "script": "kimi_search.py",
+        "endpoint": "https://redfox.hk/story/api/kimi",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "inquiry_text",
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/kimi"
+        ]
+      }
+    },
+    {
+      "name": "ks-ai-feed",
+      "description": "快手AI内容日报生成工具。每日自动扫描快手平台AI创作内容，按播放量筛选爆款视频并智能聚类，生成深色主题HTML日报（含封面图、互动数据、视频直链），同步输出AI情报洞察（热度TOP话题、起量信号、核心达人、推荐调查方向）。当用户需要AI快手日报、快手爆款、AI快手热点、快手AI内容、快手AI视频、快手情报时使用。触发词：AI快手日报、快手爆款、快手AI热点、快手情报、快手AI视频。",
+      "skillDir": "ks-ai-feed",
+      "status": "no-scripts"
+    },
+    {
+      "name": "kuaishou-account-works",
+      "description": "快手账号作品查询工具，集作品列表与详情两大能力。通过账号平台展示id（kwaiId）或主页链接id（threeXId）查询该账号全部作品列表（按发布时间倒序，含播放/点赞/评论/收藏/分享/时长/封面/视频链接）；通过作品ID（photoId）精确查询单条作品正文详情。当用户需要按账号查询快手作品列表、查看某博主全部作品、分析对标账号作品数据、深挖单条爆款作品、查看作品正文数据时使用。触发词：按账",
+      "skillDir": "kuaishou-account-works",
+      "status": "api",
+      "api": {
+        "script": "search_ks_work.py",
+        "endpoint": "https://redfox.hk/story/api/ksAllData/queryWorkList",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "page",
+          "size",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "kwai-id",
+            "default": ""
+          },
+          {
+            "name": "threex-id",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "size",
+            "default": "20"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/ksAllData/queryWorkList"
+        ]
+      }
+    },
+    {
+      "name": "kuaishou-accounts",
+      "description": "快手账号搜索工具（广域库）。通过账号名称模糊搜索快手账号，返回 kwaiId、昵称、头像、简介等，kwaiId 可直接用于查询该账号作品列表。当用户需要按名称搜索快手账号、查找快手博主、定位达人账号、获取账号kwaiId时使用。触发词：快手账号搜索、查快手账号、找快手博主、账号名称搜索、搜快手达人。",
+      "skillDir": "kuaishou-accounts",
+      "status": "api",
+      "api": {
+        "script": "search_ks_user.py",
+        "endpoint": "https://redfox.hk/story/api/ksAllData/searchUser",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "accountName",
+          "page",
+          "pageSize",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "size",
+            "default": "20"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/ksAllData/searchUser"
+        ]
+      }
+    },
+    {
+      "name": "kuaishou-comment",
+      "description": "快手评论分析工具。输入作品链接即可获取一级评论数据，支持分页浏览、评论情感分析（积极/负面/需求/竞品），生成精美 HTML 报告。当用户需要查看快手作品评论、分析评论舆情、了解用户反馈时使用。触发词：快手评论、作品评论、评论查询、评论分析、评论舆情、看评论。",
+      "skillDir": "kuaishou-comment",
+      "status": "api",
+      "api": {
+        "script": "kuaishou_comment_search.py",
+        "endpoint": "https://redfox.hk/story/api/ks/ability/commentList",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "opusId",
+          "cursor",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "cursor",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "no-html",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/ks/ability/commentList"
+        ]
+      }
+    },
+    {
+      "name": "kuaishou-search",
+      "description": "快手作品搜索工具。输入关键词就能搜到快手热门作品（广域库），支持按排序方式多维度筛选，作品标题、作者、播放数、点赞数、评论数、收藏数一览无余，点一下链接就能跳转看详情，还可提取视频详情和文案。当用户需要搜索快手作品、查找快手热门内容、查询快手作品数据时使用。触发词：快手搜索、快手作品、快手热门、快手视频查询、搜快手。",
+      "skillDir": "kuaishou-search",
+      "status": "api",
+      "api": {
+        "script": "search_ks_work.py",
+        "endpoint": "https://redfox.hk/story/api/ksAllData/searchWork",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "sort",
+          "page",
+          "size",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "sort",
+            "default": "最多点赞"
+          },
+          {
+            "name": "page",
+            "default": "1"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/ksAllData/searchWork"
+        ]
+      }
+    },
+    {
+      "name": "kuaishou-video-extract",
+      "description": "快手视频提文案工具。通过快手视频链接提取视频口播文案，自动完成「提交任务+轮询结果」，返回完整文案与带时间戳的分句，支持任务ID续查。当用户需要提取快手视频文案、获取口播稿、转写视频文字稿、复制爆款视频脚本时使用。触发词：视频提文案、提取文案、口播文案、视频文字稿、文案提取、转写视频、爆款脚本。",
+      "skillDir": "kuaishou-video-extract",
+      "status": "api",
+      "api": {
+        "script": "extract_ks_text.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/audioTextExtract/submit/kuaishou",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "task-id",
+            "default": "3.0"
+          },
+          {
+            "name": "timeout",
+            "default": "120.0"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/audioTextExtract/submit/kuaishou",
+          "https://redfox.hk/story/api/parseWork/audioTextExtract/result/kuaishou"
+        ]
+      }
+    },
+    {
+      "name": "multi-content-feed",
+      "description": "全网内容出海信息源 — 每日扫描全平台(公众号/抖音/视频号/小红书/快手/B站)内容出海爆款作品,按点赞量筛选Top50,智能聚类题材方向后生成包含平台标签、封面、互动数据与创作洞察的HTML日报。支持按平台、关键词、时间范围定向查询。⚠️数据每日15:00更新前一天数据,目标日期无数据时必须先告知用户并等待确认后才能调用接口,禁止自动获取。当用户需要内容出海日报、内容出海爆款、内容出海热点、内",
+      "skillDir": "multi-content-feed",
+      "status": "api",
+      "api": {
+        "script": "playlet_xhs_daily.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryContentExportTop",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source",
+          "platforms",
+          "startTime",
+          "endTime"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "OUTPUT_DIR"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "from-cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryContentExportTop"
+        ]
+      }
+    },
+    {
+      "name": "multi-copywrite-alchemy",
+      "description": "复刻蒸馏写作技能 —— 分析一位作者的多篇文章，深度还原其思维方式与写作风格，生成专属写作分身子技能与风格提示词。支持公众号、抖音多平台自动采集素材，也可手动粘贴文章或指定文件路径。触发词：蒸馏写作风格、写作分身、克隆写作风格、复刻蒸馏写作技能。",
+      "skillDir": "multi-copywrite-alchemy",
+      "status": "no-scripts"
+    },
+    {
+      "name": "multi-rewrite",
+      "description": "多平台文案改写能力；当用户需要将文案改写为公众号/视频号/抖音/快手/哔站/小红书/知乎风格，或批量输出多平台改写结果时使用",
+      "skillDir": "multi-rewrite",
+      "status": "api",
+      "api": {
+        "script": "rewrite.py",
+        "endpoint": "https://redfox.hk/story/api/skill/record/save",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "multi-wordcheck",
+      "description": "基于官方违禁词库，覆盖公众号、小红书、抖音三大平台审核标准，支持文案、文件、图片、链接多形式输入，快速输出违禁词标记与上下文替换建议。",
+      "skillDir": "multi-wordcheck",
+      "status": "api",
+      "api": {
+        "script": "check_sensitive_words.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "platform",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "content",
+            "default": "公众号"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+        ]
+      }
+    },
+    {
+      "name": "optimize-skill-md",
+      "description": "按照《Skills MD 标准书写格式》对现有 SKILL.md 进行结构化优化，提升描述质量、章节组织、内容简洁度和格式规范性。当用户需要优化、改进或标准化 SKILL.md 文件时使用。触发词：优化SKILL.md、改进skill、标准化skill格式、skill格式检查、skill优化。",
+      "skillDir": "optimize-skill-md",
+      "status": "api",
+      "api": {
+        "script": "record.py",
+        "endpoint": "https://redfox.hk/story/api/skill/record/save",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "skillName"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "overseas-trending-search",
+      "description": "海外跨平台热文搜索 — 输入任意关键词（中文/英文），一次搜索 X / TikTok / YouTube 三平台热门内容，每平台 Top N（默认5）统一列表（平台/标题/作者/播放/点赞/评论/发布时间/链接），终端分组表格 + CSV 导出 + 交互式 HTML 报告（卡片/表格双视图）。按关键词语言智能优先同语言内容（中文词→中文优先，英文词→英文优先，其余语言兜底）。当用户需要搜索海外平台",
+      "skillDir": "overseas-trending-search",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "config.py",
+          "headers": [
+            "X-API-KEY"
+          ],
+          "payloadKeys": [],
+          "args": []
+        },
+        {
+          "file": "digest.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": [
+            {
+              "name": "days",
+              "default": "1"
+            },
+            {
+              "name": "platforms",
+              "default": "x"
+            },
+            {
+              "name": "sort",
+              "default": "views"
+            },
+            {
+              "name": "top",
+              "default": "5"
+            },
+            {
+              "name": "output-dir"
+            },
+            {
+              "name": "api-key"
+            },
+            {
+              "name": "csv-only"
+            },
+            {
+              "name": "no-open"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pdf-image-text-extractor",
+      "description": "从图片或 PDF 文档中识别并提取文字内容，支持多种图片格式和 PDF 文件，自动判断是否包含文字并保留原始格式输出结构化结果；当用户需要从图片或 PDF 提取文字、进行 OCR 识别、处理含文字的文档或转换为可编辑文本时使用",
+      "skillDir": "pdf-image-text-extractor",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "pdf_text_extractor.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "playlet-bili-feed",
+      "description": "B站短剧爆款内容追踪工具，每日自动扫描B站短剧创作内容，按点赞量筛选爆款作品，智能聚类题材后生成可视化HTML日报与创作趋势分析。⚠️查询前脚本先做输入校验：关键词需命中短剧题材词库（topic_keywords 中规定的题材名+全部相关词，如「打脸」命中逆袭题材相关词），命中后直接使用该关键词查询数据；不满足时提醒'关键词不满足查询条件'并推荐相关词，且不发起接口请求。数据每日15:00更新前一",
+      "skillDir": "playlet-bili-feed",
+      "status": "api",
+      "api": {
+        "script": "playlet_bili_daily.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "msgType",
+          "platform",
+          "source",
+          "pageNum",
+          "pageSize",
+          "startTime",
+          "endTime",
+          "timestamp",
+          "keyword_no_match",
+          "no_data",
+          "probe_fail",
+          "probe_error",
+          "api_error"
+        ],
+        "args": [
+          {
+            "name": "topics",
+            "default": "200"
+          },
+          {
+            "name": "date",
+            "default": "OUTPUT_DIR"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "from-cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "playlet-douyin-feed",
+      "description": "短剧-抖音信息源 — 每日扫描抖音短剧爆款内容,按点赞量筛选热门短剧,智能聚类题材方向后生成包含封面、互动数据与创作洞察的HTML日报。支持按题材(穿越/霸总/重生等)、达人、时间范围定向查询。⚠️查询前脚本先做输入校验：关键词需命中短剧题材词库（topic_keywords 中规定的题材名+全部相关词，如「打脸」命中逆袭题材相关词），命中后直接使用该关键词查询数据；不满足时提醒'关键词不满足查询",
+      "skillDir": "playlet-douyin-feed",
+      "status": "api",
+      "api": {
+        "script": "playlet_douyin_daily.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "msgType",
+          "platform",
+          "source",
+          "pageNum",
+          "pageSize",
+          "startTime",
+          "endTime",
+          "timestamp",
+          "no_data",
+          "probe_fail",
+          "probe_error",
+          "keyword_no_match",
+          "api_error"
+        ],
+        "args": [
+          {
+            "name": "topics",
+            "default": "200"
+          },
+          {
+            "name": "date",
+            "default": "OUTPUT_DIR"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "from-cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "playlet-wechat-feed",
+      "description": "短剧-公众号信息源 — 每日扫描公众号短剧爆款文章,按阅读量筛选热门内容,智能聚类题材方向后生成包含封面图、互动数据与创作洞察的HTML日报。支持按题材(穿越/霸总/重生等)、公众号、时间范围定向查询。⚠️查询前脚本先做输入校验：关键词需命中短剧题材词库（topic_keywords 中规定的题材名+全部相关词，如「打脸」命中逆袭题材相关词），命中后直接使用该关键词查询数据；不满足时提醒'关键词不",
+      "skillDir": "playlet-wechat-feed",
+      "status": "api",
+      "api": {
+        "script": "playlet_wechat_daily.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "msgType",
+          "platform",
+          "source",
+          "pageNum",
+          "pageSize",
+          "startTime",
+          "endTime",
+          "timestamp",
+          "no_data",
+          "probe_fail",
+          "probe_error",
+          "keyword_no_match",
+          "api_error"
+        ],
+        "args": [
+          {
+            "name": "topics",
+            "default": "200"
+          },
+          {
+            "name": "date",
+            "default": "OUTPUT_DIR"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "from-cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "playlet-xiaohongshu-feed",
+      "description": "短剧-小红书信息源 — 每日扫描小红书短剧爆款内容,按互动量筛选热门笔记,智能聚类题材方向后生成包含封面、互动数据与创作洞察的HTML日报。支持按题材(穿越/霸总/重生等)、达人、时间范围定向查询。⚠️数据每日15:00更新前一天数据,目标日期无数据时必须先告知用户并等待确认后才能调用接口,禁止自动获取。⚠️查询前先校验分类/关键词是否符合短剧题材词库,不满足时不请求接口直接提示并推荐相关词。当用",
+      "skillDir": "playlet-xiaohongshu-feed",
+      "status": "api",
+      "api": {
+        "script": "playlet_xhs_daily.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryPlayletMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "msgType",
+          "platform",
+          "source",
+          "pageNum",
+          "pageSize",
+          "startTime",
+          "endTime",
+          "timestamp",
+          "no_data",
+          "keyword_no_match",
+          "api_error"
+        ],
+        "args": [
+          {
+            "name": "topics",
+            "default": "200"
+          },
+          {
+            "name": "date",
+            "default": "OUTPUT_DIR"
+          },
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "from-cache"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryPlayletMsgs"
+        ]
+      }
+    },
+    {
+      "name": "redfox-skill-generator",
+      "description": "一键生成高质量红狐Skill专属技能文件包（SKILL.md + 配套资源）。只需描述功能需求、提供接口地址和接口文档，即可自动生成符合红狐规范的专业技能文件，开箱即用。支持按需定制与迭代优化。触发词：当用户提到'创建红狐skill'、'生成红狐技能'、'新建红狐skill'、'写一个红狐skill'、'做个红狐skill'、'红狐技能生成'时使用",
+      "skillDir": "redfox-skill-generator",
+      "status": "no-scripts"
+    },
+    {
+      "name": "redfox-subscribe",
+      "description": "红狐订阅中心 — 统一管理全部可订阅内容源：账号追踪、AI 日报、行业日报、热榜推送。用户说「我要订阅」时展示分组菜单并引导完成订阅；「我的订阅」汇总当前所有定时推送任务；支持一键取消订阅。当用户想要订阅日报、追踪账号更新、管理推送任务、查看或取消已有订阅时使用。触发词：订阅、我要订阅、订阅中心、我的订阅、取消订阅、日报订阅、推送管理、定时推送。",
+      "skillDir": "redfox-subscribe",
+      "status": "no-scripts"
+    },
+    {
+      "name": "seedance-video-gen",
+      "description": "基于 Seedance 2.0 模型的 AI 视频生成器，输入关键词/描述文案即可生成 MP4 视频。支持文生视频、分辨率/比例/时长控制、预置虚拟人像引用。使用 Seedance 视频生成、AI 视频、text-to-video 时调用此 Skill。",
+      "skillDir": "seedance-video-gen",
+      "status": "api",
+      "api": {
+        "script": "videogen.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoGen/submit",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "model",
+          "source",
+          "resolution",
+          "ratio",
+          "duration",
+          "seed",
+          "watermark",
+          "generateAudio",
+          "returnLastFrame",
+          "executionExpiresAfter"
+        ],
+        "args": [
+          {
+            "name": "resolution",
+            "default": "720p"
+          },
+          {
+            "name": "ratio",
+            "default": "16:9"
+          },
+          {
+            "name": "duration",
+            "default": "5"
+          },
+          {
+            "name": "seed",
+            "default": "-1"
+          },
+          {
+            "name": "no-audio",
+            "default": "video"
+          },
+          {
+            "name": "no-download"
+          },
+          {
+            "name": "task-id"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoGen/submit",
+          "https://redfox.hk/story/api/parseWork/videoGen/result"
+        ]
+      }
+    },
+    {
+      "name": "seedream-5-lite",
+      "description": "基于火山方舟 seedream 5.0 lite 模型的 AI 图片生成器，支持文生图、图生图、组图生成与提示词优化。输入关键词即可生成高分辨率图片，使用 seedream 图片生成、AI 绘图、文生图、图生图时调用此 Skill。",
+      "skillDir": "seedream-5-lite",
+      "status": "no-scripts"
+    },
+    {
+      "name": "stock-analysis",
+      "description": ">",
+      "skillDir": "stock-analysis",
+      "status": "api",
+      "api": {
+        "script": "common.py",
+        "endpoint": "https://redfox.hk/story/api/gzhData/queryWorkList",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "source",
+          "account",
+          "offset",
+          "sortType",
+          "publishTimeStart",
+          "publishTimeEnd"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzhData/queryWorkList",
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "stock-feed",
+      "description": "A股每日新闻。从小红书、抖音、公众号三大平台搜索A股相关短讯，内置17个A股核心关键词一次性查询，默认近7天数据，自动过滤非股票内容，跨平台对比分析股市舆情。当用户需要研究A股舆情、股市讨论、大盘分析、选股策略、涨跌复盘时使用。触发词：A股、A股舆情、股市新闻、大盘分析、涨停、选股、A股复盘、股票讨论、股市热点。",
+      "skillDir": "stock-feed",
+      "status": "api",
+      "api": {
+        "script": "stock_feed.py",
+        "endpoint": "https://redfox.hk/story/api/multiPlatform/workSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source",
+          "startDate",
+          "endDate",
+          "total_items",
+          "date_range",
+          "platforms"
+        ],
+        "args": [
+          {
+            "name": "platforms",
+            "default": "xhs"
+          },
+          {
+            "name": "count",
+            "default": "DEFAULT_COUNT"
+          },
+          {
+            "name": "days",
+            "default": "DEFAULT_DAYS"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-dir",
+            "default": "str(Path.home("
+          },
+          {
+            "name": "api-key",
+            "default": "None"
+          },
+          {
+            "name": "max-items",
+            "default": "50"
+          },
+          {
+            "name": "from-json",
+            "default": "None"
+          },
+          {
+            "name": "report-file",
+            "default": "None"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/multiPlatform/workSearch"
+        ]
+      }
+    },
+    {
+      "name": "tiktok-home-downloader",
+      "description": "TikTok主页视频批量提取 — 输入TikTok主页链接/handle，自动拉取账号主页全部作品并解析无水印下载链接，支持批量一键下载到本地。适用场景：竞品账号内容拆解与逐帧学习、收藏喜欢的创作者全部作品避免被删、批量搬运素材二次剪辑创作、保存自己账号作品做本地备份防丢失、课程/教程类视频离线囤货反复看、甲方要求提供无水印源文件、达人合作前快速拉取对方作品做背调分析。触发词：TikTok主页下载",
+      "skillDir": "tiktok-home-downloader",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "tiktok-home-downloader.py",
+          "headers": [
+            "REDFOX_API_KEY"
+          ],
+          "payloadKeys": [
+            "secUserId",
+            "source",
+            "url"
+          ],
+          "args": [
+            {
+              "name": "account",
+              "default": "DEFAULT_PAGE_SIZE"
+            },
+            {
+              "name": "page",
+              "default": "1"
+            },
+            {
+              "name": "date-start",
+              "default": ""
+            },
+            {
+              "name": "json",
+              "default": "DEFAULT_RATE_LIMIT"
+            },
+            {
+              "name": "api-key"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tiktok-video-downloader",
+      "description": "TikTok视频下载 — 粘贴 TikTok 视频链接，一键解析返回无水印视频下载链接，支持单个或批量链接解析，自动校验 TikTok 链接有效性。当用户需要下载 TikTok 视频、保存 TikTok 视频、获取 TikTok 视频直链、批量下载 TikTok 视频时使用。触发词：TikTok视频下载、TK视频下载、TikTok视频解析、下载TikTok视频、抖音国际版视频下载、批量下载TikT",
+      "skillDir": "tiktok-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/tiktok",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/tiktok"
+        ]
+      }
+    },
+    {
+      "name": "toutiao-search",
+      "description": "今日头条爆款内容查询 — 输入关键词搜索今日头条最新作品（图文/视频），支持按阅读量/时间排序、限定时间范围，终端表格展示 + CSV 导出 + 交互式 HTML 报告。当用户需要搜索今日头条热门内容、追踪头条热点、分析爆款文章时使用。",
+      "skillDir": "toutiao-search",
+      "status": "api",
+      "api": {
+        "script": "search.py",
+        "endpoint": "https://redfox.hk/story/api/toutiao/searchWork",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "offset",
+          "source",
+          "opusId",
+          "title",
+          "authorName",
+          "publishTime",
+          "publishTs",
+          "workType",
+          "hasVideo",
+          "workUrl",
+          "viewCount",
+          "likeCount",
+          "commentCount",
+          "repostCount",
+          "shareCount",
+          "content",
+          "imageList",
+          "duration"
+        ],
+        "args": [
+          {
+            "name": "sort",
+            "default": "views"
+          },
+          {
+            "name": "hours",
+            "default": "0"
+          },
+          {
+            "name": "pages",
+            "default": "DEFAULT_PAGES"
+          },
+          {
+            "name": "video-only",
+            "default": "DEFAULT_PORT"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/toutiao/searchWork",
+          "https://redfox.hk/story/api/toutiao/workDetail"
+        ]
+      }
+    },
+    {
+      "name": "trending-hub",
+      "description": "帮你把抖音、微博、B站、快手、知乎、头条、百度等7个平台的热搜聚合在一起，省得一个个平台去看。想知道今天全网都在聊什么、哪个热点值得追、趋势怎么走，问我准没错。查热榜、导报告、订阅推送都行",
+      "skillDir": "trending-hub",
+      "status": "api",
+      "api": {
+        "script": "fetch_hotspot.py",
+        "endpoint": "https://redfox.hk/story/api/hotSpot/getListByPlatformWithKeyword",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [
+          {
+            "name": "source",
+            "default": "全平台热点事件-GitHub"
+          },
+          {
+            "name": "platforms",
+            "default": "compact"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/hotSpot/getListByPlatformWithKeyword"
+        ]
+      }
+    },
+    {
+      "name": "trending-hub-top10",
+      "description": "基于每小时收录的抖音、微博、B站、快手、知乎、头条、百度等7大平台热点数据，聚合全网最热TOP10热点。支持回溯近7天热点。不支持具体热点的查询。",
+      "skillDir": "trending-hub-top10",
+      "status": "api",
+      "api": {
+        "script": "fetch_hotspot.py",
+        "endpoint": "https://redfox.hk/story/api/hotKeyword/list",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [
+          {
+            "name": "output",
+            "default": "json"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "end-date",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/hotKeyword/list"
+        ]
+      }
+    },
+    {
+      "name": "twitter-comment",
+      "description": "X(Twitter)作品评论分析工具。输入推文链接或推文ID即可获取一级评论数据，支持游标翻页，并进行四维情感分析（积极/负面/需求/竞品）。当用户需要查看X(Twitter)推文评论、分析推文舆情、了解用户反馈时使用。触发词：X评论、Twitter评论、推文评论、X作品评论分析、评论查询、评论分析、评论舆情、看评论、twitter评论、X推文。",
+      "skillDir": "twitter-comment",
+      "status": "api",
+      "api": {
+        "script": "tweet_comment_search.py",
+        "endpoint": "https://redfox.hk/story/api/x/tweetComments",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "tweetId",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "cursor",
+            "default": "None"
+          },
+          {
+            "name": "html",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/x/tweetComments"
+        ]
+      }
+    },
+    {
+      "name": "twitter-video-downloader",
+      "description": "X(Twitter)视频下载 — 粘贴 X(Twitter) 视频链接，一键解析返回无水印视频下载链接。当用户需要下载 X(Twitter) 视频、保存推特视频、获取 X 视频直链时使用。触发词：X视频下载、Twitter视频下载、推特视频下载、X视频解析、Twitter视频解析、下载推特视频。",
+      "skillDir": "twitter-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/x",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/x"
+        ]
+      }
+    },
+    {
+      "name": "twitter-work-search",
+      "description": "输入关键词搜索X(Twitter)作品，支持按热门、最新、媒体、用户、列表五种类型精准筛选，一键获取作品正文、互动数据、媒体附件与作者信息等结构化结果。触发词：当用户提到'X搜索'、'Twitter搜索'、'作品搜索'、'X关键词搜索'、'搜一下X上的'时使用",
+      "skillDir": "twitter-work-search",
+      "status": "no-scripts"
+    },
+    {
+      "name": "video-downloader",
+      "description": "短视频下载器 — 支持抖音、小红书、快手、视频号、B站、YouTube、Instagram 等主流平台无水印视频下载。",
+      "skillDir": "video-downloader",
+      "status": "no-scripts"
+    },
+    {
+      "name": "video-prompt-expert",
+      "description": "帮助用户编写专业级 AI 视频提示词，写完直接生成 MP4 视频。支持多种创作场景与问题诊断，确保提示词准确可执行。触发词：视频提示词、视频生成提示词、AI视频创作、写视频提示词、导演指令、文生视频提示词、视频脚本、生成视频",
+      "skillDir": "video-prompt-expert",
+      "status": "api",
+      "api": {
+        "script": "videogen.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoGen/submit",
+        "method": "POST",
+        "headers": [
+          "APIKEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "model",
+          "source",
+          "resolution",
+          "ratio",
+          "duration",
+          "seed",
+          "watermark",
+          "generateAudio",
+          "returnLastFrame",
+          "executionExpiresAfter"
+        ],
+        "args": [
+          {
+            "name": "resolution",
+            "default": "720p"
+          },
+          {
+            "name": "ratio",
+            "default": "16:9"
+          },
+          {
+            "name": "duration",
+            "default": "5"
+          },
+          {
+            "name": "seed",
+            "default": "-1"
+          },
+          {
+            "name": "no-audio",
+            "default": "video"
+          },
+          {
+            "name": "no-download"
+          },
+          {
+            "name": "task-id"
+          },
+          {
+            "name": "record-only"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoGen/submit",
+          "https://redfox.hk/story/api/parseWork/videoGen/result",
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "visual-ops-writer",
+      "description": "图文运营创作器。从选题、撰写、配图到质检，一条龙完成运营文章生产。看到好文章能仿写，给个 Skill 能生成推广长文，写完正文能自动配图。内置写作质量管控与自动配图能力，图文一体交付。触发词：\"生成运营文章\"、\"链接仿写\"、\"对标分析\"、\"Skill 推广\"、\"为正文配图\"。",
+      "skillDir": "visual-ops-writer",
+      "status": "api",
+      "api": {
+        "script": "generate_image.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/imageGen/submitSkill",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "prompt",
+            "default": "None"
+          },
+          {
+            "name": "reference-image",
+            "default": "None"
+          },
+          {
+            "name": "fidelity",
+            "default": "None"
+          },
+          {
+            "name": "size",
+            "default": "1792x1024"
+          },
+          {
+            "name": "quality",
+            "default": "medium"
+          },
+          {
+            "name": "style",
+            "default": "redfox"
+          },
+          {
+            "name": "api-key",
+            "default": "None"
+          },
+          {
+            "name": "output",
+            "default": "results.json"
+          },
+          {
+            "name": "task-id",
+            "default": "None"
+          },
+          {
+            "name": "download-dir",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/imageGen/submitSkill",
+          "https://redfox.hk/story/api/parseWork/imageGen/result",
+          "https://redfox.hk/story/api/parseWork/imageGen/uploadImage"
+        ]
+      }
+    },
+    {
+      "name": "wechat-10w-hot",
+      "description": "全网持续收录每日超过1000+公众号10w+文章内容，向用户推送公众号达到10w+阅读的热门文章；当用户需要获取全领域的公众号热门文章、或订阅每日10w+文章推送、特定领域爆款文章时使用",
+      "skillDir": "wechat-10w-hot",
+      "status": "api",
+      "api": {
+        "script": "fetch_hot_articles.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "type",
+          "source",
+          "startDate",
+          "endDate"
+        ],
+        "args": [
+          {
+            "name": "type",
+            "default": "总排名"
+          },
+          {
+            "name": "start_date",
+            "default": "preview"
+          },
+          {
+            "name": "limit",
+            "default": "10"
+          },
+          {
+            "name": "source",
+            "default": "公众号10w+阅读文章推荐-GitHub"
+          },
+          {
+            "name": "temp_file",
+            "default": "temp_articles.json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime"
+        ]
+      }
+    },
+    {
+      "name": "wechat-account-analyzer",
+      "description": "公众号账号诊断工具是对任意公众号账号进行四维度量化评分（内容健康度、用户活跃度、内容核心数据、运营规范性），对标行业平均水平，输出可落地的运营优化建议。",
+      "skillDir": "wechat-account-analyzer",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "wechat_analyzer.py",
+          "headers": [
+            "X-API-KEY"
+          ],
+          "payloadKeys": [
+            "status",
+            "message",
+            "query_type",
+            "data",
+            "keyword",
+            "offset",
+            "source",
+            "name",
+            "wxId",
+            "account",
+            "candidates",
+            "accountIds",
+            "accountNames",
+            "avgReadCount",
+            "no_works_hint",
+            "unreplaced_fields"
+          ],
+          "args": [
+            {
+              "name": "account_ids"
+            },
+            {
+              "name": "account_names"
+            },
+            {
+              "name": "force_analyze"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "wechat-channels-ai-feed",
+      "description": "AI视频号信息源 — 每日自动扫描视频号 AI 相关作品，按互动量（点赞/分享/评论）筛选最火内容，智能聚类生成精美 HTML 日报，支持封面图、数据指标和每日订阅。当用户需要 AI 视频号日报、视频号AI热点、AI视频号内容、视频号信息源时使用。",
+      "skillDir": "wechat-channels-ai-feed",
+      "status": "api",
+      "api": {
+        "script": "fetch_sph_ai.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/querySphAiMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "DEFAULT_KEYWORD"
+          },
+          {
+            "name": "page-size",
+            "default": "PAGE_SIZE"
+          },
+          {
+            "name": "date",
+            "default": "datetime.now("
+          },
+          {
+            "name": "start-time",
+            "default": "None"
+          },
+          {
+            "name": "end-time",
+            "default": "None"
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/querySphAiMsgs"
+        ]
+      }
+    },
+    {
+      "name": "wechat-channels-crawler",
+      "description": "视频号作品查询工具。根据用户输入的关键词搜索视频号热门作品，支持按最新、最多点赞、最多收藏和综合排序，结果以结构化表格展示。当用户想要查找视频号热门内容、搜索视频号爆款视频、查询视频号作品数据、了解某类内容在视频号的表现时使用。触发词包括：视频号搜索、视频号作品查询、视频号爆款、视频号热门、视频号内容搜索、搜视频号、微信视频号搜索。",
+      "skillDir": "wechat-channels-crawler",
+      "status": "api",
+      "api": {
+        "script": "search_wechat_channels.py",
+        "endpoint": "https://redfox.hk/story/api/sphAllData/searchWork",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "sort",
+          "page",
+          "size",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "sort",
+            "default": "综合"
+          },
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "size",
+            "default": "20"
+          },
+          {
+            "name": "output"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/sphAllData/searchWork"
+        ]
+      }
+    },
+    {
+      "name": "wechat-cover",
+      "description": "公众号爆款封面AI设计工具。基于全网每日收录的10w+文章数据，获取同赛道爆款封面视觉元素，通过AI分析总结高转化视觉规律，生成贴合文章内容、符合平台流量审美的封面设计方案。当用户设计公众号封面、生成封面方案、查询爆款封面规律时使用。触发词：公众号封面、封面设计、爆款封面、封面方案、封面生图。",
+      "skillDir": "wechat-cover",
+      "status": "api",
+      "api": {
+        "script": "fetch_explosive_covers.py",
+        "endpoint": "https://redfox.hk/story/api/gzh/search/hotArticleNew",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source",
+          "pageSize"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "20"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "end-date",
+            "default": "None"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzh/search/hotArticleNew"
+        ]
+      }
+    },
+    {
+      "name": "wechat-fastest-growing",
+      "description": "每日账号推荐速览直接对接官方最具“黑马体质”的阅读增长榜单，按日期查看公众号阅读增长率TOP榜。每个作者只展示最高阅读那篇，标题做成可点击链接，一秒直达原文。",
+      "skillDir": "wechat-fastest-growing",
+      "status": "api",
+      "api": {
+        "script": "fetch_growth_rank.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "rankDate",
+          "source",
+          "item",
+          "total_interactions",
+          "weighted_value"
+        ],
+        "args": [
+          {
+            "name": "rankDate",
+            "default": "公众号阅读增长榜-GitHub"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise"
+        ]
+      }
+    },
+    {
+      "name": "wechat-original-hot",
+      "description": "全网持续收录每日公众号原创热门文章内容，向用户推送公众号原创热门文章；当用户需要获取全领域的公众号原创热门文章、或订阅每日原创热门文章推送时使用",
+      "skillDir": "wechat-original-hot",
+      "status": "api",
+      "api": {
+        "script": "fetch_articles.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "type",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "type",
+            "default": ""
+          },
+          {
+            "name": "source",
+            "default": "公众号文章原创之王-GitHub"
+          },
+          {
+            "name": "start_date",
+            "default": ""
+          },
+          {
+            "name": "end_date",
+            "default": ""
+          },
+          {
+            "name": "recent",
+            "default": "0"
+          },
+          {
+            "name": "limit",
+            "default": "20"
+          },
+          {
+            "name": "mode",
+            "default": "preview"
+          },
+          {
+            "name": "temp_file",
+            "default": "temp_articles.json"
+          },
+          {
+            "name": "query_intent",
+            "default": ""
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime"
+        ]
+      }
+    },
+    {
+      "name": "wechat-prohibited-word",
+      "description": "扫描公众号文案、文件或网页中的违禁词与敏感表述，标注风险并提供合规替换建议，帮你安全过审、避免删文限流。",
+      "skillDir": "wechat-prohibited-word",
+      "status": "api",
+      "api": {
+        "script": "check_sensitive_words.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "platform",
+          "source",
+          "status",
+          "code",
+          "data",
+          "msg"
+        ],
+        "args": [
+          {
+            "name": "content"
+          },
+          {
+            "name": "file"
+          },
+          {
+            "name": "url"
+          },
+          {
+            "name": "extract-only"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+        ]
+      }
+    },
+    {
+      "name": "wechat-rewrite",
+      "description": "一位公众号爆款文案撰写专家。具有硬核的公众号文案功底，不管给你什么文案，你总能把该文案转化为一篇高阅读数的公众号文案，文案中必定会包含一些具有公众号特色的词汇。这个角色需要具备精通语言的能力，这个角色的任务是通过语言的艺术表达，使句子更加生动、吸引人、有趣和具有说服力。",
+      "skillDir": "wechat-rewrite",
+      "status": "api",
+      "api": {
+        "script": "rewrite.py",
+        "endpoint": "https://redfox.hk/story/api/skill/record/save",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "wechat-search",
+      "description": "公众号搜索工具，支持按关键词搜索爆款文章，展示推荐热门文章，助力内容创作者把握趋势与获取灵感；当用户需要搜索公众号文章、查找爆款内容、获取创作灵感时使用",
+      "skillDir": "wechat-search",
+      "status": "api",
+      "api": {
+        "script": "fetch_gzh_trends.py",
+        "endpoint": "https://redfox.hk/story/api/gzh/search/hotArticleNew",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "startDate",
+          "endDate",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "50"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzh/search/hotArticleNew"
+        ]
+      }
+    },
+    {
+      "name": "wechat-similar-account",
+      "description": "公众号创作者对标账号匹配工具，基于3层加权匹配体系（核心基础40%+运营变现35%+数据特征25%）推荐对标账号和头部账号。当用户需要公众号账号推荐、公众号对标、起号参考、账号投放选择时使用。触发词：公众号对标、相似账号、对标推荐、起号参考、账号匹配。",
+      "skillDir": "wechat-similar-account",
+      "status": "api",
+      "api": {
+        "script": "wechat_similar_accountr.py",
+        "endpoint": "https://redfox.hk/story/api/gzhUser/querySimilarAccounts",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "accountId",
+          "accountName",
+          "accountType",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "account_id"
+          },
+          {
+            "name": "account_name"
+          },
+          {
+            "name": "account_type"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzhUser/querySimilarAccounts"
+        ]
+      }
+    },
+    {
+      "name": "wechat-title",
+      "description": "基于热门数据生成公众号爆款标题或对用户标题进行多维度评分的专业工具。当用户需要生成公众号标题、查询爆款内容、分析热门趋势、获取创作灵感、参考爆款规律时使用。触发词：公众号标题、爆款标题、标题生成、标题评分、公众号爆款。",
+      "skillDir": "wechat-title",
+      "status": "api",
+      "api": {
+        "script": "fetch_official_account_trends.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getWxCozeSkillData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source",
+          "startDate"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "7"
+          },
+          {
+            "name": "output"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getWxCozeSkillData"
+        ]
+      }
+    },
+    {
+      "name": "wechat-top-account",
+      "description": "公众号热门账号推荐快速获取微信公众号综合实力排行榜TOP50，支持按日榜/周榜/月榜及垂直领域筛选，展示综合评分以及详细数据。支持深度分析单个账号、导出HTML可视化报告、订阅日/周/月榜推送。当用户需要查询公众号实力排行、按时间或领域筛选、查看互动指标、获取榜单解读、导出图表或接收定期推送时使用。",
+      "skillDir": "wechat-top-account",
+      "status": "api",
+      "api": {
+        "script": "gen_gzh_html.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataIndex",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "rankType",
+          "rankDate",
+          "category",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "rank_type",
+            "default": "day"
+          },
+          {
+            "name": "rank_date",
+            "default": "None"
+          },
+          {
+            "name": "keyword",
+            "default": "50"
+          },
+          {
+            "name": "input_json_file",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataIndex"
+        ]
+      }
+    },
+    {
+      "name": "wechat-video-downloader",
+      "description": "一键解析视频号视频的真实下载地址。粘贴视频号分享链接，即可获取视频标题、封面图和高清无水印下载地址。触发词：当用户提到'解析视频号'、'视频号下载地址'、'视频号下载'、'视频号无水印下载'时使用",
+      "skillDir": "wechat-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "parse_video_download.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/sph",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/sph"
+        ]
+      }
+    },
+    {
+      "name": "wechat-write",
+      "description": "公众号文案创作工具。基于红狐数据公众号爆款雷达每日收录的热门文章，按关键词检索爆款、分析流量规律、生成可发布的完整文章。当用户写公众号文章、生成公众号文案、查找爆款文章、分析爆款规律时使用。触发词：公众号文案、公众号爆款、爆款文章、公众号写作、公众号文章生成。",
+      "skillDir": "wechat-write",
+      "status": "api",
+      "api": {
+        "script": "fetch_gzh_trends.py",
+        "endpoint": "https://redfox.hk/story/api/gzh/search/hotArticleNew",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "startDate",
+          "endDate",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "output-format",
+            "default": "markdown"
+          },
+          {
+            "name": "debug"
+          },
+          {
+            "name": "no-auto-expand"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/gzh/search/hotArticleNew"
+        ]
+      }
+    },
+    {
+      "name": "weibo-comment-search",
+      "description": "微博评论分析工具。输入微博博文链接即可获取一级评论数据，支持分页浏览和四维情感分析（积极/负面/需求/竞品）。当用户需要查看微博评论、分析评论舆情、了解用户反馈时使用。触发词：微博评论、博文评论、评论查询、评论分析、看评论。",
+      "skillDir": "weibo-comment-search",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "backfill_html.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": [
+            {
+              "name": "analysis-json",
+              "default": "None"
+            }
+          ]
+        },
+        {
+          "file": "weibo_comment_search.py",
+          "headers": [
+            "X-API-KEY"
+          ],
+          "payloadKeys": [
+            "opusId",
+            "maxCursor",
+            "maxIdType",
+            "source"
+          ],
+          "args": [
+            {
+              "name": "cursor",
+              "default": "0"
+            },
+            {
+              "name": "page",
+              "default": "1"
+            },
+            {
+              "name": "no-html",
+              "default": "None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "weibo-hot-search",
+      "description": "微博热搜榜单查询工具。调用 Redfox 接口获取微博当前热搜榜单，按排名展示热搜标题及跳转链接，并对热搜内容进行创作灵感分析总结。当用户需要查看微博热搜、微博热榜、微博热门话题时使用。触发词：微博热搜、微博热榜、微博热门话题、热搜榜、微博热搜榜。",
+      "skillDir": "weibo-hot-search",
+      "status": "api",
+      "api": {
+        "script": "fetch_weibo_hot.py",
+        "endpoint": "https://redfox.hk/story/api/weibo/ability/hotSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "source"
+        ],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/weibo/ability/hotSearch"
+        ]
+      }
+    },
+    {
+      "name": "weibo-post-search",
+      "description": "微博账号作品回采。输入微博用户主页链接或 uid，调用 Redfox 接口查询该用户最新博文，支持分页浏览。当用户需要查看某用户微博动态、追踪博主最新内容时使用。触发词：查用户博文、用户微博、微博主页、查博主、微博动态。",
+      "skillDir": "weibo-post-search",
+      "status": "api",
+      "api": {
+        "script": "user_work_list.py",
+        "endpoint": "https://redfox.hk/story/api/weibo/ability/userWorkList",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "uid",
+          "page",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "page",
+            "default": "1"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/weibo/ability/userWorkList"
+        ]
+      }
+    },
+    {
+      "name": "weibo-realtime-search",
+      "description": "微博作品搜索工具。根据用户输入的关键词调用 Redfox 接口搜索微博博文，支持按搜索类别（综合排序/热门排序/实时排序）和认证类型筛选。当用户需要搜索微博内容、查找微博热门博文时使用。触发词：微博搜索、搜微博、微博热门、微博博文、微博账号搜索。",
+      "skillDir": "weibo-realtime-search",
+      "status": "api",
+      "api": {
+        "script": "search_weibo.py",
+        "endpoint": "https://redfox.hk/story/api/weibo/ability/searchWork",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "searchType",
+          "page",
+          "keyword",
+          "extParam",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "search-type",
+            "default": "1"
+          },
+          {
+            "name": "page",
+            "default": "1"
+          },
+          {
+            "name": "ext-param",
+            "default": ""
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/weibo/ability/searchWork"
+        ]
+      }
+    },
+    {
+      "name": "weibo-video-downloader",
+      "description": "",
+      "skillDir": "weibo-video-downloader",
+      "status": "no-scripts"
+    },
+    {
+      "name": "xiaohongshu-account-analyzer",
+      "description": "深度拆解小红书账号，输出七维度量化评分诊断报告与可导出HTML；当用户提供小红书号进行账号诊断、rednote分析、账号健康度评估、商业价值评估、多账号对比或制定优化策略时使用",
+      "skillDir": "xiaohongshu-account-analyzer",
+      "status": "api",
+      "api": {
+        "script": "xiaohongshu_analyzer.py",
+        "endpoint": "https://redfox.hk/story/api/xhsUser/query",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "userIds",
+          "source",
+          "status",
+          "message",
+          "output_path",
+          "query_type",
+          "data",
+          "accounts",
+          "template_structure",
+          "account_count"
+        ],
+        "args": [
+          {
+            "name": "user_ids"
+          },
+          {
+            "name": "account_name"
+          },
+          {
+            "name": "account_names"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhsUser/query"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-ai-feed",
+      "description": "AI小红书信息源 — 每日自动扫描小红书 AI 相关笔记，按互动量（点赞/分享/评论）筛选最火内容，智能聚类生成精美 HTML 日报，支持封面图、数据指标和每日订阅。当用户需要 AI 小红书日报、小红书AI热点、AI小红书内容、小红书信息源、xhs ai feed 时使用。",
+      "skillDir": "xiaohongshu-ai-feed",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_ai.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/queryXhsAiMsgs",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "DEFAULT_KEYWORD"
+          },
+          {
+            "name": "page-size",
+            "default": "PAGE_SIZE"
+          },
+          {
+            "name": "date",
+            "default": "datetime.now("
+          },
+          {
+            "name": "start-time",
+            "default": "None"
+          },
+          {
+            "name": "end-time",
+            "default": "None"
+          },
+          {
+            "name": "output-dir"
+          },
+          {
+            "name": "subscribe"
+          },
+          {
+            "name": "unsubscribe"
+          },
+          {
+            "name": "no-open"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/queryXhsAiMsgs"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-cover",
+      "description": "专为小红书内容创作打造的AI封面设计工具，基于全网每日持续收录的2000+条爆款笔记数据，深度抓取同赛道爆款封面的视觉元素，通过AI智能分析总结高转化视觉规律，生成贴合笔记内容、符合平台流量审美的可落地封面设计方案，省去繁琐设计流程，提升笔记封面点击率。",
+      "skillDir": "xiaohongshu-cover",
+      "status": "api",
+      "api": {
+        "script": "fetch_explosive_covers.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "debug",
+            "default": "3"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-crawler",
+      "description": "小红书作品爬取工具。根据关键词爬取小红书热门作品数据，支持按日期范围、排序方式筛选，结果以结构化表格展示。当用户需要爬取小红书作品、查询小红书热门内容、搜索小红书爆款笔记时使用。触发词：小红书爬取、小红书作品、小红书爆款、小红书搜索、小红书热门、小红书笔记查询。",
+      "skillDir": "xiaohongshu-crawler",
+      "status": "api",
+      "api": {
+        "script": "crawl_xhs.py",
+        "endpoint": "https://redfox.hk/story/api/xhs/crawl/work",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "startDate",
+          "endDate",
+          "source",
+          "sortType"
+        ],
+        "args": [
+          {
+            "name": "start-date",
+            "default": ""
+          },
+          {
+            "name": "end-date",
+            "default": ""
+          },
+          {
+            "name": "sort-type",
+            "default": "_0"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhs/crawl/work"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-dailytop",
+      "description": "小红书每日爆款笔记是追踪小红书各领域每日趋势，监测不同领域的实时热度变化，识别正在起量的内容方向，预判下一波流量风口。最终基于当日爆款内容，提炼可复用的选题、话术与呈现形式，生成创作灵感。支持分类查询当日热门笔记，按美妆、穿搭、美食等分类检索小红书当天热度最高的笔记，快速掌握各赛道头部内容。",
+      "skillDir": "xiaohongshu-dailytop",
+      "status": "api",
+      "api": {
+        "script": "gen_xhs_html.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataOne",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "rankDate",
+          "source",
+          "category"
+        ],
+        "args": [
+          {
+            "name": "rank_date",
+            "default": "None"
+          },
+          {
+            "name": "keyword",
+            "default": "20"
+          },
+          {
+            "name": "input_json",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataOne"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-lowtop",
+      "description": "小红书低粉爆款笔记专注于挖掘小红书平台上的低粉爆款数据，获取粉丝量低于5000但互动量超过500的笔记榜单。寻找拥有爆款规律和热门趋势的优质样本。",
+      "skillDir": "xiaohongshu-lowtop",
+      "status": "api-unknown",
+      "scripts": [
+        {
+          "file": "fetch_explosive_articles.py",
+          "headers": [],
+          "payloadKeys": [
+            "rankDate",
+            "category",
+            "source",
+            "code",
+            "data",
+            "type",
+            "msg",
+            "title",
+            "photoJumpUrl",
+            "userName",
+            "userJumpUrl",
+            "useLikeCount",
+            "collectedCount",
+            "useCommentCount",
+            "useShareCount",
+            "interactiveCount",
+            "fans",
+            "desc",
+            "analysis",
+            "coverUrl",
+            "userHeadUrl",
+            "publicTime"
+          ],
+          "args": [
+            {
+              "name": "rank_date",
+              "default": "50"
+            },
+            {
+              "name": "realtime",
+              "default": "综合全部"
+            },
+            {
+              "name": "keyword"
+            },
+            {
+              "name": "show_all"
+            },
+            {
+              "name": "debug"
+            }
+          ]
+        },
+        {
+          "file": "generate_html_on_demand.py",
+          "headers": [],
+          "payloadKeys": [],
+          "args": [
+            {
+              "name": "from-cache",
+              "default": "综合全部"
+            },
+            {
+              "name": "top_n",
+              "default": "50"
+            },
+            {
+              "name": "output"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xiaohongshu-note-analyzer",
+      "description": "小红书笔记优化助手工具，基于全网爆款数据对用户文案进行多维度评分并给出改进建议；当用户需要评估文案质量、获取优化建议时使用",
+      "skillDir": "xiaohongshu-note-analyzer",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_trends.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "50"
+          },
+          {
+            "name": "output-format",
+            "default": "markdown"
+          },
+          {
+            "name": "debug"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-prohibited-word",
+      "description": "检测文案、文件或网页中的小红书违禁词并加粗显示，提供违禁词替换建议和仅替换违禁词后的文案；当用户需要查询小红书平台违禁词、检查小红书笔记文案是否包含敏感词、或希望获得安全替换词和修改后文案时使用。",
+      "skillDir": "xiaohongshu-prohibited-word",
+      "status": "api",
+      "api": {
+        "script": "check_sensitive_words.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "content",
+          "platform",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "content"
+          },
+          {
+            "name": "file"
+          },
+          {
+            "name": "url"
+          },
+          {
+            "name": "extract-only"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-rewrite",
+      "description": "小红书文案改写能力；当用户需要将文案改写为小红书风格时使用",
+      "skillDir": "xiaohongshu-rewrite",
+      "status": "api",
+      "api": {
+        "script": "rewrite.py",
+        "endpoint": "https://redfox.hk/story/api/skill/record/save",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-search",
+      "description": "小红书热门笔记搜索工具，支持关键词搜索获取热门内容数据，基于数据评分排序推荐热门笔记，助力创作者发现热门趋势、获取创作灵感。仅在主Agent中执行,不派发给子Agent。",
+      "skillDir": "xiaohongshu-search",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_hot_articles.py",
+        "endpoint": "https://redfox.hk/story/api/xhs/search/search",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "startDate",
+          "endDate",
+          "source",
+          "noteId",
+          "title",
+          "desc",
+          "authorId",
+          "authorNickname",
+          "authorFans",
+          "createTime",
+          "noteLink",
+          "authorLink",
+          "interactiveCount",
+          "likedCount",
+          "collectedCount",
+          "commentsCount",
+          "sharedCount"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "end-date",
+            "default": "None"
+          },
+          {
+            "name": "page-num",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "default": "50"
+          },
+          {
+            "name": "debug",
+            "default": "3"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhs/search/search"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-similar-account",
+      "description": "小红书创作者对标账号匹配工具，输入小红书账号ID或赛道+粉丝数+账号等级，推荐可直接复制的同阶对标和可参考的高阶标杆；当用户需要小红书账号推荐、KOL对标、起号参考、账号投放选择时使用。⚠️ 严禁任何联网搜索。",
+      "skillDir": "xiaohongshu-similar-account",
+      "status": "api",
+      "api": {
+        "script": "xiaohongshu-similar-account.py",
+        "endpoint": "https://redfox.hk/story/api/xhsUser/querySimilarAccounts",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "redId",
+          "track",
+          "maxFans",
+          "minFans",
+          "level",
+          "source",
+          "gmt_create",
+          "same_level_accounts",
+          "high_level_accounts"
+        ],
+        "args": [
+          {
+            "name": "red_id",
+            "default": "素人"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhsUser/querySimilarAccounts"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-title",
+      "description": "基于用户输入的任何信息生成小红书爆款标题的专业工具。无论用户输入什么，最终目标都是生成小红书爆款标题。",
+      "skillDir": "xiaohongshu-title",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_trends.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "output-format",
+            "default": "markdown"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "debug",
+            "default": "3"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-title-score",
+      "description": "拆解爆款标题逻辑，结合用户输入一键生成10个优质爆款标题，告别标题纠结；同时对已有标题从主题匹配度、结构合规度、利益清晰度、情绪唤醒度、稀缺性感知和合规安全性六大维度加权评分，输出等级评定与优化建议；当用户需要生成小红书爆款标题、评估标题爆款潜力、了解标题与爆款规律匹配度或获取标题优化建议时使用",
+      "skillDir": "xiaohongshu-title-score",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_trends.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "output-format",
+            "default": "markdown"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "debug",
+            "default": "3"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-top-account",
+      "description": "小红书账号榜单追踪分析工具，支持查询日榜周榜月榜TOP50排名和热门账号",
+      "skillDir": "xiaohongshu-top-account",
+      "status": "api",
+      "api": {
+        "script": "fetch_rank.py",
+        "endpoint": "https://redfox.hk/story/api/xhsData/query",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "dateType",
+          "rankDate",
+          "type",
+          "source",
+          "list",
+          "total",
+          "period",
+          "date",
+          "category",
+          "fetchTime"
+        ],
+        "args": [
+          {
+            "name": "query",
+            "default": ""
+          },
+          {
+            "name": "period",
+            "default": "None"
+          },
+          {
+            "name": "date",
+            "default": ""
+          },
+          {
+            "name": "category",
+            "default": ""
+          },
+          {
+            "name": "limit",
+            "default": "20"
+          },
+          {
+            "name": "output",
+            "default": ""
+          },
+          {
+            "name": "format",
+            "default": "markdown"
+          },
+          {
+            "name": "html"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhsData/query"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-video-downloader",
+      "description": "小红书视频下载 — 粘贴小红书视频链接，一键解析返回无水印视频下载链接。当用户需要下载小红书视频、保存红书视频、获取小红书视频直链时使用。触发词：小红书视频下载、红书视频下载、小红书视频解析、下载小红书视频、RED视频下载。",
+      "skillDir": "xiaohongshu-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/xhs",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "url",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/xhs"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-weeklytop",
+      "description": "专注于小红书平台的内容趋势分析，基于近7天热门笔记TOP50深度洞察，支持24个垂直领域分类查询、冷门爆款挖掘及每日订阅推送。创作者可查询小红书热门内容、分析爆款笔记、了解各领域趋势或获取创作灵感。",
+      "skillDir": "xiaohongshu-weeklytop",
+      "status": "api",
+      "api": {
+        "script": "xhs_weekly_fetcher.py",
+        "endpoint": "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataSeven?rankDate={rank_date}&source={source}&category={category_encoded}",
+        "method": "GET",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "rank_date",
+            "default": "None"
+          },
+          {
+            "name": "category",
+            "default": "None"
+          },
+          {
+            "name": "keyword",
+            "default": "None"
+          },
+          {
+            "name": "top_n",
+            "default": "10"
+          },
+          {
+            "name": "save_json",
+            "default": "None"
+          },
+          {
+            "name": "list_categories"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataSeven?rankDate={rank_date}&source={source}&category={category_encoded}"
+        ]
+      }
+    },
+    {
+      "name": "xiaohongshu-write",
+      "description": "专为小红书内容创作打造的一站式笔记生成工具，基于全网每日持续收录的2000+条爆款笔记数据，根据用户输入关键词，精准检索查询平台当下热门爆款笔记，通过AI深度复盘爆款内容的结构、开头逻辑、干货密度与互动话术，提炼核心流量密码与创作要点，严格贴合小红书内容生态与传播逻辑，生成通顺、合规、可直接发布的完整笔记文案，降低创作门槛，高效产出流量内容。仅在主Agent中执行,不派发给子Agent。",
+      "skillDir": "xiaohongshu-write",
+      "status": "api",
+      "api": {
+        "script": "fetch_xhs_hot_articles.py",
+        "endpoint": "https://redfox.hk/story/api/xhs/search/search",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [
+          "keyword",
+          "pageNum",
+          "pageSize",
+          "startDate",
+          "endDate",
+          "source",
+          "noteId",
+          "title",
+          "desc",
+          "authorId",
+          "authorNickname",
+          "authorFans",
+          "createTime",
+          "noteLink",
+          "authorLink",
+          "interactiveCount",
+          "likedCount",
+          "collectedCount",
+          "commentsCount",
+          "sharedCount"
+        ],
+        "args": [
+          {
+            "name": "keyword",
+            "default": "10"
+          },
+          {
+            "name": "output-format",
+            "default": "json"
+          },
+          {
+            "name": "output-file",
+            "default": "None"
+          },
+          {
+            "name": "start-date",
+            "default": "None"
+          },
+          {
+            "name": "end-date",
+            "default": "None"
+          },
+          {
+            "name": "page-num",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "default": "50"
+          },
+          {
+            "name": "debug",
+            "default": "3"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/xhs/search/search"
+        ]
+      }
+    },
+    {
+      "name": "youtube-comment",
+      "description": "YouTube视频评论分析工具。输入视频链接即可获取评论数据，支持翻页续查与四维情感分析（积极/负面/需求/竞品），快速掌握任意视频下的用户反馈全貌。当用户需要查看YouTube视频评论、分析视频舆情、了解用户反馈时使用。触发词：YouTube评论、油管评论、视频评论、评论查询、评论分析、评论舆情、看评论、youtube评论、YT评论。",
+      "skillDir": "youtube-comment",
+      "status": "api",
+      "api": {
+        "script": "youtube_comment_search.py",
+        "endpoint": "https://redfox.hk/story/api/youtube/videoComments",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "videoId",
+          "sortBy",
+          "languageCode",
+          "countryCode",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "sort-by",
+            "default": "top"
+          },
+          {
+            "name": "language-code",
+            "default": "zh-CN"
+          },
+          {
+            "name": "country-code",
+            "default": "US"
+          },
+          {
+            "name": "continuation-token",
+            "default": "None"
+          },
+          {
+            "name": "html",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/youtube/videoComments"
+        ]
+      }
+    },
+    {
+      "name": "youtube-digest",
+      "description": "YouTube 提文案 — 输入 YouTube 视频链接或 ID，一键提取视频文字稿（字幕/口播文案），默认输出不带时间戳的纯文案；字幕中文轨优先、无中文轨回退英文后自动翻译为中文，结果以表格（标题/时长/文案内容）呈现，支持导出 Excel、可选带时间戳版本。当用户需要提取 YouTube 视频文案、把视频转成文字稿、做视频笔记/总结/翻译/二次创作时使用。",
+      "skillDir": "youtube-digest",
+      "status": "api",
+      "api": {
+        "script": "extract.py",
+        "endpoint": "https://redfox.hk/story/api/youtube/transcript",
+        "method": "POST",
+        "headers": [
+          "REDFOX_API_KEY"
+        ],
+        "payloadKeys": [
+          "videoUrl",
+          "format",
+          "includeTimestamp",
+          "sendMetadata",
+          "language",
+          "source"
+        ],
+        "args": [
+          {
+            "name": "language",
+            "default": "DEFAULT_LANGUAGE"
+          },
+          {
+            "name": "timestamp",
+            "default": "str(DEFAULT_OUTPUT_DIR"
+          },
+          {
+            "name": "no-translate",
+            "default": "None"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/youtube/transcript"
+        ]
+      }
+    },
+    {
+      "name": "youtube-video-downloader",
+      "description": "YouTube视频下载 — 粘贴 YouTube 视频链接，一键解析返回无水印视频下载链接（支持多种清晰度）。当用户需要下载 YouTube 视频、保存油管视频、获取 YouTube 视频直链时使用。触发词：YouTube视频下载、油管视频下载、yt视频下载、YouTube视频解析、下载YouTube视频、youtube视频下载。",
+      "skillDir": "youtube-video-downloader",
+      "status": "api",
+      "api": {
+        "script": "downloader.py",
+        "endpoint": "https://redfox.hk/story/api/parseWork/videoDownload/youtube",
+        "method": "POST",
+        "headers": [
+          "API_KEY",
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [
+          {
+            "name": "api-key"
+          },
+          {
+            "name": "save-key"
+          },
+          {
+            "name": "json"
+          }
+        ],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/parseWork/videoDownload/youtube"
+        ]
+      }
+    },
+    {
+      "name": "zhihu-rewrite",
+      "description": "将用户文案转换为知乎风格，携带2-3个特色关键词（指南、教程、秘籍等），按10项写作技巧改写，末尾附加Tags；当用户需要将产品介绍、攻略分享等内容改写为知乎爆款文案时使用",
+      "skillDir": "zhihu-rewrite",
+      "status": "api",
+      "api": {
+        "script": "rewrite.py",
+        "endpoint": "https://redfox.hk/story/api/skill/record/save",
+        "method": "POST",
+        "headers": [
+          "X-API-KEY"
+        ],
+        "payloadKeys": [],
+        "args": [],
+        "allEndpoints": [
+          "https://redfox.hk/story/api/skill/record/save"
+        ]
+      }
+    }
+  ]
+}

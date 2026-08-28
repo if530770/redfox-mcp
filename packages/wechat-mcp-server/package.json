@@ -1,0 +1,18 @@
+{
+  "name": "redfox-mcp-server-wechat",
+  "version": "1.0.0",
+  "description": "公众号数据 MCP Server — 10w+爆文、标题参考、账号诊断、违禁词检测等15个工具",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "wechat-mcp": "server.js"
+  },
+  "files": ["server.js"],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "model-context-protocol", "wechat", "公众号", "redfox", "新媒体数据"]
+}
