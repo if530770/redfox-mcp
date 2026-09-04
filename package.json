@@ -1,7 +1,7 @@
 {
   "name": "redfox-mcp-server",
-  "version": "1.0.1",
-  "description": "RedFox 新媒体数据 MCP 服务器：抖音/小红书/公众号/B站/快手/微博/YouTube 等平台爆款数据查询、违禁词检测、AI搜索、视频下载与生成（91 个工具，零依赖）",
+  "version": "1.0.4",
+  "description": "RedFox 新媒体数据 MCP 服务器：抖音/小红书/公众号/B站/快手/微博/YouTube 等平台爆款数据查询、违禁词检测、AI搜索、视频下载与生成（88 个工具，零依赖）",
   "license": "MIT",
   "bin": {
     "redfox-mcp": "server.js"
@@ -32,6 +32,7 @@
   "scripts": {
     "start": "node server.js",
     "test:list": "node mcp-test-client.js list",
+    "test:pkg": "node scripts/verify-packages.js",
     "gen:register": "node gen-qoder-register.js"
   },
   "publishConfig": {

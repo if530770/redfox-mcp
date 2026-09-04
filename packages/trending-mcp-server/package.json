@@ -1,0 +1,31 @@
+{
+  "name": "redfox-mcp-server-trending",
+  "version": "1.0.0",
+  "description": "全网热点研究 MCP Server — 多平台热搜聚合（抖音/微博/B站/快手/知乎/头条/百度）、全网热点TOP10回溯、今日头条作品搜索、近30天跨平台话题舆情研究（小红书/抖音/公众号）、全网内容出海Top50（公众号/抖音/视频号/小红书/快手/B站）（5 个工具）",
+  "author": "RedFox",
+  "license": "MIT",
+  "bin": {
+    "trending-mcp": "server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "redfox-mcp-server": ">=1.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "trending",
+    "hotspot",
+    "research",
+    "toutiao",
+    "aggregate",
+    "redfox",
+    "新媒体数据",
+    "热点"
+  ]
+}

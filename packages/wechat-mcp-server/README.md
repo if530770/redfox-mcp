@@ -13,7 +13,7 @@
 
 ### 1. 获取 API Key
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=modelscope) 获取 `REDFOX_API_KEY`。
+前往 [红狐hub](https://redfox.hk/settings/api-keys) 获取 `REDFOX_API_KEY`。
 
 ### 2. 配置到 MCP 客户端
 

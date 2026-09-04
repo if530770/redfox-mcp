@@ -2,7 +2,7 @@
 
 将 [redfox-community](https://github.com/redfox-data/redfox-community) 仓库的 **115 个 Agent Skill** 封装为 **单一 MCP 服务器**（方案2：全部工具一次部署可用）。
 
-- **91 个工具**可直接调用（已接入 RedFox 真实 API）
+- **88 个工具**可直接调用（已接入 RedFox 真实 API）
 - **零依赖**：纯 Node.js 原生实现（内置 fetch），无需 npm install、无需 Python
 - **协议**：MCP (Model Context Protocol) over stdio，兼容 Qoder / Claude / Cursor 等客户端
 
@@ -42,7 +42,7 @@ npm publish         # 包名 redfox-mcp-server，零依赖，37KB
 | 环境变量 | `REDFOX_API_KEY`（连接时由用户填写自己的 Key） |
 | README | 功能说明 + 使用方式（可直接用本文件） |
 
-平台部署检测会执行 `npx -y redfox-mcp-server@latest` 并调用 `tools/list`（已实测无需 API Key 即可返回 91 个工具，检测可顺利通过）。
+平台部署检测会执行 `npx -y redfox-mcp-server@latest` 并调用 `tools/list`（已实测无需 API Key 即可返回 88 个工具，检测可顺利通过）。
 
 ### 3. 用户使用
 
@@ -52,7 +52,7 @@ npm publish         # 包名 redfox-mcp-server，零依赖，37KB
 https://mcp-<uuid>.api-inference.modelscope.cn/sse
 ```
 
-填入任意 MCP 客户端（Qoder / Dify / 通义灵码等）即可远程使用全部 91 个工具。
+填入任意 MCP 客户端（Qoder / Dify / 通义灵码等）即可远程使用全部 88 个工具。
 
 > 免费部署限制：每用户最多 20 个部署服务、每服务 1 个实例、全部免费服务 5 秒窗口内 ≤500 次请求、单用户总量 ≤50000 次。
 
@@ -60,7 +60,7 @@ https://mcp-<uuid>.api-inference.modelscope.cn/sse
 
 ### 1. 获取 API Key
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=modelscope) 获取 `REDFOX_API_KEY`。
+前往 [红狐hub](https://redfox.hk/settings/api-keys) 获取 `REDFOX_API_KEY`。
 
 ### 2. 启动服务器
 

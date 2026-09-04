@@ -107,7 +107,7 @@ async function submitAndPoll({ submitUrl, resultUrl, submitBody, taskIdField = '
       const resultUrlFinal = resultUrl.replace('{taskId}', encodeURIComponent(taskId));
       const r = await request({ url: resultUrlFinal, method: 'POST', body: { taskId }, headerName });
       const status = String(dig(r, 'data.status') || dig(r, 'status') || '').toLowerCase();
-      if (status === 'success' || status === 'done' || status === 'completed' || status === 'finished' || dig(r, 'data.result')) {
+      if (status === 'success' || status === 'done' || status === 'completed' || status === 'finished' || status === 'succeeded' || dig(r, 'data.result')) {
         return { taskId, submitted: submitResp, result: r };
       }
       if (status === 'failed' || status === 'error' || status === 'fail') {

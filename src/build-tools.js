@@ -13,7 +13,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { overrides, SOURCE } = require('./overrides');
+const { overrides, SOURCE, EXCLUDED_TOOLS } = require('./overrides');
+const EXCLUDED = new Set(EXCLUDED_TOOLS || []);
 const { request, submitAndPoll, RedFoxApiError } = require('./redfox-client');
 
 const MANIFEST_PATH = path.join(__dirname, '..', 'tools-manifest.json');
@@ -73,7 +74,7 @@ function inferType(key) {
  * 构建带 override 的工具定义
  */
 function buildWithOverride(item, ov) {
-  const { params = {}, payload, description, async: isAsync, submitUrl, resultUrl, taskIdField, pollIntervalMs, pollMaxAttempts } = ov;
+  const { params = {}, payload, description, async: isAsync, submitUrl, resultUrl, taskIdField, pollIntervalMs, pollMaxAttempts, endpoint: ovEndpoint, method: ovMethod } = ov;
 
   const properties = {};
   const required = [];
@@ -106,11 +107,36 @@ function buildWithOverride(item, ov) {
       return { content: [{ type: 'text', text: JSON.stringify(result, null, 2) }] };
     };
   } else {
-    const endpoint = item.api?.endpoint || submitUrl;
-    const method = item.api?.method || 'POST';
+    const endpoint = ovEndpoint || item.api?.endpoint || submitUrl;
+    const method = ovMethod || item.api?.method || 'POST';
     handler = async (args) => {
       const body = makeBody(args);
-      const resp = await request({ url: endpoint, method, body });
+      const placeholders = [...endpoint.matchAll(/\{(\w+)\}/g)].map(m => m[1]);
+      const isGet = method.toUpperCase() === 'GET';
+      let url = endpoint;
+      let finalBody = body;
+
+      if (placeholders.length) {
+        // URL 模板渲染（如 GET query 接口: ...?rankDate={rankDate}&category={category}）
+        for (const key of placeholders) {
+          const value = body[key];
+          if (value === undefined || value === null) {
+            throw new RedFoxApiError(`缺少 URL 参数: ${key}`, 'MISSING_URL_PARAM');
+          }
+          url = url.replace(new RegExp(`\\{${key}\\}`), encodeURIComponent(String(value)));
+        }
+        finalBody = undefined;
+      } else if (isGet) {
+        // GET + query 接口（榜单类，如 hotSpot/getListByPlatform）：非空参数拼到 query string
+        const qs = Object.entries(body)
+          .filter(([, v]) => v !== undefined && v !== null && v !== '')
+          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)
+          .join('&');
+        if (qs) url = `${endpoint}${endpoint.includes('?') ? '&' : '?'}${qs}`;
+        finalBody = undefined;
+      }
+
+      const resp = await request({ url, method: placeholders.length || isGet ? 'GET' : method, body: finalBody });
       return { content: [{ type: 'text', text: JSON.stringify(resp, null, 2) }] };
     };
   }
@@ -140,6 +166,10 @@ function buildAllTools() {
   const skipped = [];
 
   for (const item of items) {
+    if (EXCLUDED.has(item.name)) {
+      skipped.push({ name: item.name, reason: 'record-only-endpoint' });
+      continue;
+    }
     const ov = overrides[item.name];
     try {
       if (ov) {
