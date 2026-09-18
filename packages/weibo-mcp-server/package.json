@@ -1,6 +1,6 @@
 {
   "name": "redfox-mcp-server-weibo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "微博数据 MCP Server — 热搜、实时搜、文章搜、评论搜索等4个工具",
   "author": "RedFox",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "README.md"
   ],
   "dependencies": {
-    "redfox-mcp-server": ">=1.0.0"
+    "redfox-mcp-server": ">=1.0.6"
   },
   "engines": {
     "node": ">=18"

@@ -1009,7 +1009,7 @@ const overrides = {
   },
 };
 
-const SOURCE = 'RedFoxMCP';
+const SOURCE = 'mcp';
 
 /* ---------------- 日期辅助（与真实技能脚本保持一致） ---------------- */
 

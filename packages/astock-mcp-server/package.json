@@ -1,6 +1,6 @@
 {
   "name": "redfox-mcp-server-astock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A股财经数据 MCP Server — A股公众号大V榜、公众号A股大V文章查询（猫笔刀/格兰投研等）、跨平台A股资讯检索、投资博主文章素材采集（4 个工具）",
   "author": "RedFox",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "README.md"
   ],
   "dependencies": {
-    "redfox-mcp-server": ">=1.0.4"
+    "redfox-mcp-server": ">=1.0.6"
   },
   "engines": {
     "node": ">=18"

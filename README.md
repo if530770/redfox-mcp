@@ -60,7 +60,7 @@ https://mcp-<uuid>.api-inference.modelscope.cn/sse
 
 ### 1. 获取 API Key
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys) 获取 `REDFOX_API_KEY`。
+前往 [红狐hub](https://redfox.hk/settings/api-keys?source=mcp) 获取 `REDFOX_API_KEY`。
 
 ### 2. 启动服务器
 
@@ -142,13 +142,13 @@ MCP 客户端 ──JSON-RPC/stdio──> server.js ──> build-tools.js 工�
                                     redfox-client.js（X-API-KEY 双发）
                                                 │
                                                 ▼
-                                    https://redfox.hk/story/api/...
+                                    https://redfox.hk/story/api/...?source=mcp
 ```
 
 ### 工具参数设计
 
 - 参数名与 RedFox API payload 字段一致（camelCase：`startDate`/`pageNum`/`pageSize`）
-- `source` 字段由服务器自动填充为 `RedFoxMCP`，无需调用方传参
+- `source` 字段由服务器自动填充为 `mcp`，无需调用方传参
 - 异步任务类工具（视频生成/视频提文案/评论获取）自动提交 + 轮询，直接返回最终结果
 
 ## 重新生成工具清单

@@ -13,7 +13,7 @@
 
 ### 1. 获取 API Key
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys) 获取 `REDFOX_API_KEY`。
+前往 [红狐hub](https://redfox.hk/settings/api-keys?source=mcp) 获取 `REDFOX_API_KEY`。
 
 ### 2. 配置到 MCP 客户端
 
@@ -87,7 +87,7 @@ redfox-mcp-server-wechat（server.js，仅 4KB）
 redfox-mcp-server（依赖）──> build-tools.js 工具构建
                                   │
                                   ▼
-                      redfox-client.js ──> https://redfox.hk/story/api/...
+                      redfox-client.js ──> https://redfox.hk/story/api/...?source=mcp
 ```
 
 ## 常见问题

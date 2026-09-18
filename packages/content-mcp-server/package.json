@@ -1,6 +1,6 @@
 {
   "name": "redfox-mcp-server-content",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "全网内容数据 MCP Server — 公众号/抖音/小红书/B站短剧爆款榜、文旅公众号文章/抖音作品/小红书笔记/B站视频查询、多平台官方违禁词检测（公众号/小红书/抖音/B站/快手）（9 个工具）",
   "author": "RedFox",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "README.md"
   ],
   "dependencies": {
-    "redfox-mcp-server": ">=1.0.4"
+    "redfox-mcp-server": ">=1.0.6"
   },
   "engines": {
     "node": ">=18"

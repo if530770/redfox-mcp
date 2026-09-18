@@ -1,6 +1,6 @@
 {
   "name": "redfox-mcp-server",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "RedFox 新媒体数据 MCP 服务器：抖音/小红书/公众号/B站/快手/微博/YouTube 等平台爆款数据查询、违禁词检测、AI搜索、视频下载与生成（88 个工具，零依赖）",
   "license": "MIT",
   "bin": {

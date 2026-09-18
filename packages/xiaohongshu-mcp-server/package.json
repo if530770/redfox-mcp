@@ -1,6 +1,6 @@
 {
   "name": "redfox-mcp-server-xiaohongshu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "小红书数据 MCP Server — 爆款笔记、标题评分、账号诊断、违禁词检测等16个工具",
   "author": "RedFox",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "README.md"
   ],
   "dependencies": {
-    "redfox-mcp-server": ">=1.0.0"
+    "redfox-mcp-server": ">=1.0.6"
   },
   "engines": {
     "node": ">=18"
